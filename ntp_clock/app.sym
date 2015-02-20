@@ -1,0 +1,1364 @@
+
+build/app.out:     file format elf32-xtensa-le
+
+SYMBOL TABLE:
+3ffe8000 l    d  .data	00000000 .data
+3ffe9110 l    d  .rodata	00000000 .rodata
+3ffeb2c8 l    d  .bss	00000000 .bss
+40100000 l    d  .text	00000000 .text
+40240000 l    d  .irom0.text	00000000 .irom0.text
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  .xtensa.info	00000000 .xtensa.info
+00000000 l    d  .xt.lit	00000000 .xt.lit
+00000000 l    d  .xt.prop	00000000 .xt.prop
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    d  .debug_loc	00000000 .debug_loc
+00000000 l    d  .debug_ranges	00000000 .debug_ranges
+00000000 l    d  .debug_pubnames	00000000 .debug_pubnames
+00000000 l    df *ABS*	00000000 user_main.c
+00000000 l    df *ABS*	00000000 clock.c
+3ffe80f0 l     O .data	00000620 configInfoBlock
+3ffeb448 l     O .bss	00000004 commandTopic
+3ffe8090 l     O .data	00000060 commandElements
+402429b0 l     F .irom0.text	0000009f survey_complete_cb
+3ffeb440 l     O .bss	00000004 configHandle
+3ffe8084 l     O .data	00000009 clkStr$3041
+3ffeb44c l     O .bss	00000004 wifiStatus
+3ffeb43c l     O .bss	00000001 sntpInitialized$2974
+3ffeb454 l     O .bss	00000014 sntpServerList
+3ffeb450 l     O .bss	00000004 pollingInterval
+3ffeb444 l     O .bss	00000004 statusTopic
+3ffeb468 l     O .bss	00000014 display_timer
+00000000 l    df *ABS*	00000000 uart.c
+4010089c l     F .text	0000004f uart0_rx_intr_handler
+40242cb4 l     F .irom0.text	00000155 uart_config
+00000000 l    df *ABS*	00000000 mqtt.c
+402434a8 l     F .irom0.text	00000085 mqtt_dns_found
+00000000 l    df *ABS*	00000000 mqtt_msg.c
+40243ac4 l     F .irom0.text	00000040 append_message_id
+40243b04 l     F .irom0.text	00000062 append_string
+40243b68 l     F .irom0.text	00000062 fini_message$constprop$3
+00000000 l    df *ABS*	00000000 queue.c
+00000000 l    df *ABS*	00000000 ringbuf.c
+00000000 l    df *ABS*	00000000 utils.c
+00000000 l    df *ABS*	00000000 wifi.c
+3ffeb48c l     O .bss	00000014 WiFiLinker
+3ffeb489 l     O .bss	00000001 wifiStatus
+402442c4 l     F .irom0.text	000000d1 wifi_check_ip
+3ffeb488 l     O .bss	00000001 lastWifiStatus
+00000000 l    df *ABS*	00000000 kvstore.c
+402443a0 l     F .irom0.text	00000051 kvstoreIndex
+3ffe8710 l     O .data	00000004 sig
+00000000 l    df *ABS*	00000000 sntp.c
+3ffeb4a8 l     O .bss	00000008 sntpTime
+3ffeb4b0 l     O .bss	00000004 sntp_retry_timeout
+3ffeb4a0 l     O .bss	00000001 sntpState
+402447f8 l     F .irom0.text	000000a7 sntp_request
+402446f8 l     F .irom0.text	00000043 sntp_retry$isra$0
+3ffeb4c0 l     O .bss	00000004 sntp_pcb
+402448a8 l     F .irom0.text	00000057 sntp_try_next_server
+40244754 l     F .irom0.text	00000086 sntp_send_request
+3ffeb4b4 l     O .bss	00000001 sntp_num_servers
+3ffeb4bc l     O .bss	00000004 sntpServerList
+3ffeb4b5 l     O .bss	00000001 sntp_current_server
+40244a60 l     F .irom0.text	00000033 sntp_dns_found
+3ffeb4c4 l     O .bss	00000014 ntp_timer
+3ffeb4b8 l     O .bss	00000004 pollingInterval
+40244924 l     F .irom0.text	00000131 sntp_recv
+00000000 l    df *ABS*	00000000 time_utils.c
+00000000 l    df *ABS*	00000000 util.c
+00000000 l    df *ABS*	00000000 proto.c
+00000000 l    df *ABS*	00000000 atoi.c
+00000000 l    df *ABS*	00000000 memcpy.o
+40105ffc l       .text	00000000 __memcpy_aux
+00000000 l    df *ABS*	00000000 memset.o
+40106144 l       .text	00000000 __memset_aux
+00000000 l    df *ABS*	00000000 strtol.c
+00000000 l    df *ABS*	00000000 tolower.c
+00000000 l    df *ABS*	00000000 ctype_.c
+00000000 l    df *ABS*	00000000 impure.c
+3ffe8730 l     O .data	00000400 impure_data_26
+00000000 l    df *ABS*	00000000 libgcc2.c
+00000000 l    df *ABS*	00000000 libgcc2.c
+00000000 l    df *ABS*	00000000 libgcc2.c
+00000000 l    df *ABS*	00000000 memcmp.c
+00000000 l    df *ABS*	00000000 rand.c
+00000000 l    df *ABS*	00000000 _addsubsf3.o
+40105130 l       .text	00000000 __addsf3_aux
+40105214 l       .text	00000000 __subsf3_aux
+00000000 l    df *ABS*	00000000 _mulsf3.o
+40105330 l       .text	00000000 __mulsf3_aux
+00000000 l    df *ABS*	00000000 _divsf3.o
+40105490 l       .text	00000000 __divsf3_aux
+00000000 l    df *ABS*	00000000 _muldf3.o
+4010565c l       .text	00000000 __muldf3_aux
+00000000 l    df *ABS*	00000000 _divdf3.o
+401058f8 l       .text	00000000 __divdf3_aux
+00000000 l    df *ABS*	00000000 libgcc2.c
+00000000 l    df *ABS*	00000000 libgcc2.c
+00000000 l    df *ABS*	00000000 libgcc2.c
+00000000 l    df *ABS*	00000000 
+3ffeb2d0 g     O .bss	00000024 info
+3fff2b94 g     O .bss	00000004 current_iphdr_src
+40256288 g     F .irom0.text	0000002e chm_check_same_channel
+40264c20 g     F .irom0.text	00000025 aes_encrypt_deinit
+4024a1e8 g     F .irom0.text	000000d7 cal_rf_ana_gain
+40240d64 g     F .irom0.text	00000008 system_init_done_cb
+4026c3a4 g     F .irom0.text	00000017 inet_chksum
+4024c360 g     F .irom0.text	00000002 chip_v6_get_sense
+4024e8c0 g     F .irom0.text	00000019 pm_force_scan_unlock
+4025ffbc g     F .irom0.text	00000091 wpa_get_ntp_timestamp
+4025c3c8 g     F .irom0.text	00000048 pbuf_realloc
+3ffe8082 g     O .data	00000001 dhcps_flag
+402440a4 g     F .irom0.text	00000039 mqtt_msg_pubcomp
+4010091c g     F .text	000000a9 WIFI_Connect
+40267bd8 g     F .irom0.text	00000130 x509_verify
+40268e48 g     F .irom0.text	0000007e asn1_signature_type
+40100558 g     F .text	00000028 pvPortCalloc
+40100b48 g     F .text	00000083 strcpy
+40240f30 g     F .irom0.text	000000af wifi_param_save_protect
+402408e0 g     F .irom0.text	00000053 system_upgrade_reboot
+4025e31c g     F .irom0.text	00000010 tcp_next_iss
+4025454c g     F .irom0.text	00000031 ieee80211_phy_init
+3ffe8714 g     O .data	0000000c calendar_leap
+4024aa7c g     F .irom0.text	000001b6 rc_cal
+4024fa40 g     F .irom0.text	0000003f rc_get_sta_trc
+4025b258 g     F .irom0.text	0000002e igmp_report_groups
+40266078 g     F .irom0.text	00000073 ssl_new_context
+4025dbf0 g     F .irom0.text	00000039 tcp_update_rcv_ann_wnd
+40247574 g     F .irom0.text	000001b4 tx_cap_init
+40104570 g     F .text	0000003f wDev_EnableTransmit
+40268fd4 g     F .irom0.text	0000003c bi_free
+402660ec g     F .irom0.text	00000026 add_private_key
+4000ba48 g       *ABS*	00000000 sha1_prf
+3ffeb4e8 g     O .bss	00000001 rxdc_init_flag
+3fff2a18 g     O .bss	00000004 link_timer
+40268be8 g     F .irom0.text	0000008f asn1_public_key
+40266dc4 g     F .irom0.text	00000067 send_finished
+4024058c g     F .irom0.text	00000007 xPortGetFreeHeapSize
+3fff2ba4 g     O .bss	00000004 netif_list
+4026b8b0 g     F .irom0.text	000000a3 RSA_encrypt
+40257b00 g     F .irom0.text	00000020 dhcp_cleanup
+402507d4 g     F .irom0.text	00000044 ieee80211_ifattach
+40258870 g     F .irom0.text	00000022 node_remove_from_list
+40263eac g     F .irom0.text	00000034 rsn_pmkid
+40260520 g     F .irom0.text	0000003e wpa_auth_sta_init
+40242fc8 g     F .irom0.text	00000041 mqtt_tcpclient_sent_cb
+4025ee14 g     F .irom0.text	00000122 tcp_rst
+401045b4 g     F .text	0000001e wDev_DisableTransmit
+4025c7fc g     F .irom0.text	0000004f pbuf_memfind
+40243310 g     F .irom0.text	000000cd mqtt_timer
+40105c10 g     F .text	000003eb .hidden __divdi3
+4024145c g     F .irom0.text	00000066 wifi_station_disconnect
+40257194 g     F .irom0.text	0000005f cnx_node_alloc
+40100820 g     F .text	00000054 system_rtc_mem_read
+40244b9c g     F .irom0.text	0000005c get_month
+4000a2cc g       *ABS*	00000000 hmac_md5
+40267084 g     F .irom0.text	000000fc ssl_session_update
+4024db90 g     F .irom0.text	00000002 pm_idle_sleep
+4024f834 g     F .irom0.text	00000048 rcAttach
+3ffeb2c4 g       *ABS*	00000000 _bss_table_end
+40244f78 g     F .irom0.text	0000003a util_strndup
+3ffeb86f g     O .bss	00000001 loop_pwctrl_correct_atten_high_power
+4026c490 g     F .irom0.text	00000045 RC4_crypt
+4025b104 g     F .irom0.text	00000021 etharp_request
+4024a54c g     F .irom0.text	0000009c txiq_get_mis_pwr
+402687b8 g     F .irom0.text	0000016b asn1_get_private_key
+3fff2f90 g     O .bss	00000004 default_private_key
+40257b24 g     F .irom0.text	000000af dhcp_start
+40247518 g     F .irom0.text	0000002c stop_dig_rx
+40252690 g     F .irom0.text	000002fe ieee80211_parse_beacon
+402480c0 g     F .irom0.text	0000004f target_power_backoff
+40241970 g     F .irom0.text	000000a5 wifi_softap_deauth
+4025e258 g     F .irom0.text	00000005 tcp_err
+3ffe930c g     O .rodata	00000004 ip_addr_any
+4026c1f4 g     F .irom0.text	000000c9 inet_chksum_pseudo
+fffff00f g       *ABS*	00000000 _memmap_cacheattr_unused_mask
+40257c7c g     F .irom0.text	00000046 dhcp_network_changed
+40100388 g     F .text	000000b9 ets_timer_arm_new
+4025f97c g     F .irom0.text	00000033 udp_remove
+40246e4c g     F .irom0.text	0000013e gen_rx_gain_table
+402492e8 g     F .irom0.text	00000053 tx_cont_dis
+40252d14 g     F .irom0.text	00000004 ieee80211_setup_rateset
+4026b684 g     F .irom0.text	00000065 RSA_pub_key_new
+4025bdbc g     F .irom0.text	00000019 ip_output_if
+3ffe8b64 g     O .data	00000001 tx_pwctrl_atten_init_en
+402430ac g     F .irom0.text	0000025c mqtt_tcpclient_recv
+4026c070 g     F .irom0.text	00000054 UTILS_IsIPV4
+4024d0c0 g     F .irom0.text	00000102 sleep_reset_analog_rtcreg_8266
+40241a24 g     F .irom0.text	0000008a wifi_set_phy_mode
+402599f4 g     F .irom0.text	00000034 espconn_tcp_set_max_con_allow
+4024a150 g     F .irom0.text	0000008b get_sar_dout
+40265d88 g     F .irom0.text	00000074 ssl_free
+4026a6a0 g     F .irom0.text	00000024 ssl_obj_free
+401064cc g       *ABS*	00000000 _lit4_end
+4026467c g     F .irom0.text	00000039 wpa_sm_alloc_eapol
+4026b860 g     F .irom0.text	0000002d RSA_print
+3ffe90dc g     O .data	00000018 tkip
+4025c47c g     F .irom0.text	00000078 pbuf_free
+4025e248 g     F .irom0.text	00000005 tcp_recv
+40242f08 g     F .irom0.text	00000033 uart0_tx_buffer
+4010550c g     F .text	00000000 .hidden __divsf3
+00000110 g       *ABS*	00000000 _memmap_cacheattr_wt_base
+40267308 g     F .irom0.text	00000017 sslserver_new
+4025c518 g     F .irom0.text	00000029 pbuf_cat
+402646d4 g     F .irom0.text	00000004 wpa_sm_mlme_setprotection
+3ffeb758 g     O .bss	00000008 noise_array
+402508d4 g     F .irom0.text	00000028 ieee80211_find_channel
+40254820 g     F .irom0.text	00000034 ieee80211_iserp_rateset
+40244aa8 g     F .irom0.text	00000073 sntp_init
+4025bfbc g     F .irom0.text	00000039 ip_output
+4025abcc g     F .irom0.text	0000003c etharp_cleanup_netif
+401064ca g       *ABS*	00000000 _text_end
+40100628 g     F .text	0000005d spi_flash_get_id
+3ffe9444 g     O .rodata	00000004 ssl_prot_prefs
+40264354 g     F .irom0.text	000000bf ppInstallKey
+4025f6e4 g     F .irom0.text	0000004f udp_sendto
+40245d60 g     F .irom0.text	000000c5 ram_rfpll_set_freq
+4026402c g     F .irom0.text	00000025 wpa_parse_wpa_ie
+40259908 g     F .irom0.text	00000045 espconn_create
+40245cc8 g     F .irom0.text	00000058 wait_rfpll_cal_end
+40244c08 g     F .irom0.text	0000015a epoch_to_str
+402433f0 g     F .irom0.text	000000ab mqtt_tcpclient_connect_cb
+4025b824 g     F .irom0.text	0000001c ipaddr_addr
+401055c8 g     F .text	00000000 .hidden __fixsfsi
+402566c4 g     F .irom0.text	00000011 cnx_start_handoff_cb
+4025f078 g     F .irom0.text	00000077 tcp_keepalive
+40102e60 g     F .text	00000024 ppRollBackTxQ
+3ffeb739 g     O .bss	00000001 pwctrl_debug
+4025a9b8 g     F .irom0.text	0000004c etharp_tmr
+402503dc g     F .irom0.text	0000000f ic_set_opmode
+400018a4 g       *ABS*	00000000 ets_memset
+401064cc g       *ABS*	00000000 _lit4_start
+4025e160 g     F .irom0.text	000000ce tcp_alloc
+402547a4 g     F .irom0.text	00000034 ieee80211_node_pwrsave
+4026a2c0 g     F .irom0.text	00000045 get_random_NZ
+40254f7c g     F .irom0.text	0000000a scan_set_desChan
+40254644 g     F .irom0.text	00000027 ieee80211_dot11Rate_rix
+4026aa4c g     F .irom0.text	00000085 load_key_certs
+40000dc0 g       *ABS*	00000000 ets_set_idle_cb
+40102e84 g     F .text	0000000f ppRecordBarRRC
+4025f734 g     F .irom0.text	0000014a udp_sendto_if
+40244eb8 g     F .irom0.text	00000020 util_assert_handler
+40247c94 g     F .irom0.text	00000052 ram_set_noise_floor
+3ffebb08 g     O .bss	00000004 time_num
+40264320 g     F .irom0.text	00000031 wpa_gen_wpa_ie
+40247c64 g     F .irom0.text	0000002e get_noisefloor_sat
+40246344 g     F .irom0.text	00000060 chip_v6_set_chan_wakeup
+40002be8 g       *ABS*	00000000 ets_putc
+40248ef8 g     F .irom0.text	0000033b phy_gpio_cfg
+3ffe8ba0 g     O .data	00000060 dpd_index
+3ffeb484 g     O .bss	00000004 wifiCb
+4025e244 g     F .irom0.text	00000004 tcp_arg
+4025f2b4 g     F .irom0.text	0000005b sys_timeouts_init
+40241cd4 g     F .irom0.text	0000005e wifi_get_macaddr
+40009410 g       *ABS*	00000000 aes_unwrap
+3fff2be8 g     O .bss	00000004 tcp_active_pcbs
+4024e9a8 g     F .irom0.text	00000016 pm_assoc_parse
+4026210c g     F .irom0.text	0000006c wpa_add_kde
+40268f2c g     F .irom0.text	0000003b bi_clear_cache
+4024ec30 g     F .irom0.text	00000017 pp_try_enable_idle_timer
+3ffec0a0 g     O .bss	00000024 wDevCtrl
+4026a148 g     F .irom0.text	00000087 bi_crt
+3fff2c0c g     O .bss	00000004 udp_pcbs
+40264120 g     F .irom0.text	0000009a wpa_supplicant_parse_ies
+4024dc70 g     F .irom0.text	000001fd pm_onBcnRx
+401009d0 g     F .text	00000010 get_calendar
+40245688 g     F .irom0.text	00000064 ram_pbus_xpd_tx_on
+4025d99c g     F .irom0.text	00000059 tcp_shutdown
+4025b128 g     F .irom0.text	00000077 ethernet_input
+40254ff8 g     F .irom0.text	0000013f scan_profile_check
+401064ca g       .text	00000000 _etext
+4024518c g     F .irom0.text	00000013 PROTO_Init
+40256f18 g     F .irom0.text	00000147 cnx_update_bss_more
+402474d4 g     F .irom0.text	0000003e start_dig_rx
+40002ae8 g       *ABS*	00000000 ets_bzero
+40263f80 g     F .irom0.text	00000060 rsn_cipher_put_suites
+40247c48 g     F .irom0.text	0000001c ram_get_noisefloor
+40254590 g     F .irom0.text	00000032 ieee80211_setup_ratetable
+40256dd0 g     F .irom0.text	00000082 cnx_rc_update_rssi
+4025c50c g     F .irom0.text	0000000c pbuf_ref
+3ffeb876 g     O .bss	00000001 SDIO_slp_reject
+3ffeb877 g     O .bss	00000001 hardware_reject
+4024c364 g     F .irom0.text	00000004 chip_v6_unset_chanfreq
+401045d4 g     F .text	00000045 Tx_Copy2Queue
+4025c1a0 g     F .irom0.text	0000000d netif_set_netmask
+40269bf0 g     F .irom0.text	00000057 bi_compare
+4025e0b0 g     F .irom0.text	00000031 tcp_recv_null
+3fff2b98 g     O .bss	00000004 current_netif
+402413dc g     F .irom0.text	00000034 wifi_station_set_auto_connect
+40252fa0 g     F .irom0.text	0000012a ieee80211_send_setup
+402445d4 g     F .irom0.text	00000057 kvstore_flush
+4025b544 g     F .irom0.text	000000a6 igmp_leavegroup
+40105234 g     F .text	00000000 .hidden __subsf3
+4026a1d8 g     F .irom0.text	00000021 RNG_initialize
+3ffeb754 g     O .bss	00000001 periodic_cal_flag
+4025e994 g     F .irom0.text	000000e3 tcp_enqueue_flags
+40101cf8 g     F .text	0000000b GetAccess
+4024fb10 g     F .irom0.text	0000002d rc_only_sta_trc
+40268b48 g     F .irom0.text	0000009f asn1_name
+3ffe90b0 g     O .data	00000002 memp_sizes_test
+4024db9c g     F .irom0.text	000000c8 pm_open
+3fff2e94 g     O .bss	00000004 hex_index
+40254528 g     F .irom0.text	00000005 ieee80211_get_11g_ratetable
+4025d978 g     F .irom0.text	00000024 tcp_close
+4025fe94 g     F .irom0.text	00000052 hostapd_get_psk
+4025dc2c g     F .irom0.text	00000044 tcp_recved
+40252d1c g     F .irom0.text	00000284 ieee80211_output_pbuf
+402504e8 g     F .irom0.text	0000000d ic_set_gtk_alg
+3ffe98e0 g     O .rodata	00000100 .hidden __popcount_tab
+4025e26c g     F .irom0.text	00000048 tcp_pcb_purge
+40254f08 g     F .irom0.text	00000022 scan_clear_channles
+40241174 g     F .irom0.text	00000114 wifi_station_set_config
+40247ec4 g     F .irom0.text	000001f9 noise_init
+40242f90 g     F .irom0.text	00000017 uart1_init
+402503f0 g     F .irom0.text	0000004f ic_enable_interface
+4026aad4 g     F .irom0.text	00000016 MD2_Init
+40260704 g     F .irom0.text	000003d2 wpa_receive
+40247464 g     F .irom0.text	0000006f do_noisefloor
+4025b9a4 g     F .irom0.text	00000014 ipaddr_ntoa
+40240da8 g     F .irom0.text	00000036 wifi_softap_dhcps_stop
+402414c4 g     F .irom0.text	0000002b wifi_station_get_connect_status
+4025049c g     F .irom0.text	0000001c ic_is_pure_sta
+40259c14 g     F .irom0.text	0000002d espconn_disconnect
+40002d40 g       *ABS*	00000000 ets_timer_disarm
+4024c894 g     F .irom0.text	00000074 pm_sdio_nidle
+3ffe9350 g     O .rodata	00000007 tcp_persist_backoff
+40248114 g     F .irom0.text	00000077 sdt_on_noise_start
+40241e30 g     F .irom0.text	00000029 system_os_task
+3ffeb4f0 g     O .bss	000001d8 chip6_sleep_params
+402671cc g     F .irom0.text	00000007 ssl_get_session_id
+402469d8 g     F .irom0.text	0000002e rtc_mem_backup
+4026a1fc g     F .irom0.text	00000002 RNG_custom_init
+40106040 g     F .text	00000101 memcpy
+40263dbc g     F .irom0.text	000000e3 wpa_pmk_to_ptk
+3fff2bfc g     O .bss	00000004 tcp_ticks
+40246a08 g     F .irom0.text	00000030 rtc_mem_recovery
+3fff2bf8 g     O .bss	00000004 tcp_listen_pcbs
+402548c8 g     F .irom0.text	00000011 ieee80211_addbasicrates
+4026b958 g     F .irom0.text	00000024 SHA1_Init
+4010369c g     F .text	0000007b ppCalTxop
+4000242c g       *ABS*	00000000 ets_install_putc1
+4024e988 g     F .irom0.text	0000001d pm_allow_tx
+402412a0 g     F .irom0.text	000000e0 wifi_station_ap_change
+40265fe4 g     F .irom0.text	00000029 ssl_get_cert_subject_alt_dnsname
+4025ef38 g     F .irom0.text	00000039 tcp_rexmit_rto
+40243abc g     F .irom0.text	00000005 MQTT_OnPublished
+40260628 g     F .irom0.text	0000002d wpa_auth_sta_deinit
+3ffebb0c g     O .bss	00000001 idle_timer_enabled
+40240260 g     F .irom0.text	0000009c wdt_init
+40250f94 g     F .irom0.text	00000329 hostap_input
+40246f8c g     F .irom0.text	0000006e pbus_set_rxbbgain
+40106328 g     F .text	00000004 get_file
+40268c78 g     F .irom0.text	00000064 asn1_signature
+4010649c g     F .text	00000000 .hidden __floatsidf
+40245128 g     F .irom0.text	00000061 util_parse_command_int
+402645d0 g     F .irom0.text	00000037 wpa_attach
+3ffeb2c4 g       *ABS*	00000000 _rodata_end
+4025e230 g     F .irom0.text	00000011 tcp_new
+4025f95c g     F .irom0.text	00000015 udp_disconnect
+4025c640 g     F .irom0.text	00000086 pbuf_copy_partial
+40103a8c g     F .text	0000005a rcUpdateRxDone
+4025b288 g     F .irom0.text	00000020 igmp_lookfor_group
+4025ff70 g     F .irom0.text	00000043 hexstr2bin
+40102664 g     F .text	00000048 lmacProcessCtsTimeout
+4025f310 g     F .irom0.text	00000075 sys_timeout
+3fff2ec8 g     O .bss	000000c8 mqttClient
+40100518 g     F .text	0000003a vPortFree
+3ffeb874 g     O .bss	00000001 periodic_cal_sat
+4024000c g     F .irom0.text	0000005e read_macaddr_from_otp
+40258134 g     F .irom0.text	000000bd dhcp_release
+40100d88 g     F .text	00000012 tolower
+3ffe9370 g     O .rodata	0000002c tcp_state_str
+40254c38 g     F .irom0.text	0000004f scan_cancel
+4026c3bc g     F .irom0.text	00000072 inet_chksum_pbuf
+40268efc g     F .irom0.text	0000002f bi_terminate
+4025c6c8 g     F .irom0.text	00000064 pbuf_take
+3ffeb86e g     O .bss	00000001 tx_pwctrl_pk_num
+40244fb4 g     F .irom0.text	0000009b util_string_split
+400025e0 g       *ABS*	00000000 rtc_get_reset_reason
+401000ac g     F .text	0000006b wdt_feed
+40265f34 g     F .irom0.text	00000077 add_cert_auth
+40244290 g     F .irom0.text	0000000f QUEUE_IsEmpty
+40250a88 g     F .irom0.text	00000052 ieee80211_crypto_decap
+40242684 g     F .irom0.text	00000015 mqttPublishedCb
+3fff2b90 g     O .bss	00000004 current_iphdr_dest
+4024b54c g     F .irom0.text	00000026 ram_get_bb_atten
+401061c0 g     F .text	0000004c .hidden __udivsi3
+402501ac g     F .irom0.text	00000045 wDev_Crypto_Conf
+40102da8 g     F .text	0000004d ppGetTxQFirstAvail_Locked
+4025f9e8 g     F .irom0.text	000001b3 icmp_input
+4024c870 g     F .irom0.text	0000001f pm_prepare_to_sleep
+40002c48 g       *ABS*	00000000 ets_timer_setfn
+4025404c g     F .irom0.text	0000015d ieee80211_send_proberesp
+40103630 g     F .text	00000020 ppDiscardMPDU
+40247728 g     F .irom0.text	00000040 target_power_add_backoff
+40269730 g     F .irom0.text	00000075 bi_print
+40004a00 g       *ABS*	00000000 SPIEraseSector
+4025c000 g     F .irom0.text	00000063 netif_add
+40100710 g     F .text	0000003f spi_flash_read
+402677e0 g     F .irom0.text	000002d4 x509_new
+4024e9c0 g     F .irom0.text	0000001d pm_set_addr
+40256360 g     F .irom0.text	000000d3 cnx_sta_connect_cmd
+3ffeb2c8 g       *ABS*	00000000 _bss_start
+4024e864 g     F .irom0.text	00000014 pm_is_open
+4025bae8 g     F .irom0.text	00000072 ip_router
+401014a8 g     F .text	0000001d register_phy_ops
+4025e064 g     F .irom0.text	0000001c tcp_segs_free
+40269e04 g     F .irom0.text	000000bb bi_barrett
+4025b1bc g     F .irom0.text	0000003c igmp_start
+40250a34 g     F .irom0.text	00000004 ieee80211_crypto_setkey
+40241f24 g     F .irom0.text	00000025 skip_atoi
+401039f8 g     F .text	00000094 rcUpdateTxDone
+3ffeb2bc g       *ABS*	00000000 __XT_EXCEPTION_DESCS__
+40259a74 g     F .irom0.text	0000010f espconn_get_connection_info
+4026c120 g     F .irom0.text	00000057 UTILS_Atoh
+40268f6c g     F .irom0.text	00000023 bi_copy
+3fff2e90 g     O .bss	00000004 hex_finish
+4024fe78 g     F .irom0.text	0000001b wDevForceAck6M
+40248714 g     F .irom0.text	00000235 phy_dig_spur_prot
+40268d80 g     F .irom0.text	00000092 asn1_find_oid
+40248a4c g     F .irom0.text	000003af phy_bb_rx_cfg
+4024fa80 g     F .irom0.text	0000006f rc_get_trc
+4025c128 g     F .irom0.text	00000065 netif_set_ipaddr
+4024bf24 g     F .irom0.text	0000007c dpd_mem_write
+22222112 g       *ABS*	00000000 _memmap_cacheattr_wb_allvalid
+402599cc g     F .irom0.text	00000028 espconn_tcp_get_max_con_allow
+40250a30 g     F .irom0.text	00000004 ieee80211_crypto_available
+40251a84 g     F .irom0.text	0000003f ieee80211_ht_node_init
+40247544 g     F .irom0.text	00000022 chip_v6_set_chanfreq
+40242668 g     F .irom0.text	00000015 mqttDisconnectedCb
+401050b0 g     F .text	0000001e dhcp_bind_check
+40241288 g     F .irom0.text	00000012 wifi_station_get_current_ap_id
+4024c828 g     F .irom0.text	00000046 pm_set_pll_xtal_wait_time
+4026a0bc g     F .irom0.text	00000089 bi_mod_power2
+4024e974 g     F .irom0.text	00000012 pm_scan_unlocked
+3fff2f94 g     O .bss	00000004 default_certificate
+40245224 g     F .irom0.text	0000003b PROTO_Parse
+40245e6c g     F .irom0.text	000002fa ram_set_channel_freq
+40002ab8 g       *ABS*	00000000 ets_strncmp
+40249fb4 g     F .irom0.text	00000069 set_txdc_pbus
+401015fc g     F .text	00000015 lmacIsIdle
+4025e65c g     F .irom0.text	00000336 tcp_write
+40264cc8 g     F .irom0.text	00000016 espconn_secure_accept
+40251ce0 g     F .irom0.text	000000d1 ieee80211_setup_htrates
+4026962c g     F .irom0.text	00000072 bi_import
+402575e4 g     F .irom0.text	00000012 ieee80211_recv_action_unregister
+4025389c g     F .irom0.text	0000004d ieee80211_getcapinfo
+40100000 g       *ABS*	00000000 _text_start
+4025ac08 g     F .irom0.text	0000003a etharp_find_addr
+402538f8 g     F .irom0.text	0000053e ieee80211_send_mgmt
+40103ba8 g     F .text	00000046 rcGetRate
+40002ac8 g       *ABS*	00000000 ets_strlen
+40269204 g     F .irom0.text	000002fc bi_divide
+401037a8 g     F .text	0000000b RC_GetAckRate
+40265ca4 g     F .irom0.text	00000052 ssl_ctx_new
+4024d068 g     F .irom0.text	0000001f sleep_opt_8266
+402503d0 g     F .irom0.text	0000000a ic_get_addr
+4025fca4 g     F .irom0.text	0000006b hostapd_config_defaults
+40251bd0 g     F .irom0.text	0000010b ieee80211_ht_updateparams
+40104b28 g     F .text	00000039 wifi_station_stop
+4026a208 g     F .irom0.text	000000b6 get_random
+402506d4 g     F .irom0.text	0000005c ic_set_key
+4024ff34 g     F .irom0.text	00000054 wDev_SetRxPolicy
+40100004 g     F .text	00000015 call_user_start
+00000110 g       *ABS*	00000000 _memmap_cacheattr_wb_base
+4025daa8 g     F .irom0.text	0000008a tcp_bind
+3ffe8c30 g     O .data	00000004 chip_version
+4025da8c g     F .irom0.text	00000011 tcp_abort
+4010485c g     F .text	00000017 wDevDisableRx
+4026013c g     F .irom0.text	0000003d ets_strdup
+4024eb04 g     F .irom0.text	00000041 pm_get_idle_wait_time
+3ffeb756 g     O .bss	00000001 deep_sleep_en
+402450b8 g     F .irom0.text	0000006f util_match_stringi
+402462cc g     F .irom0.text	00000074 chip_v6_set_chan
+40250730 g     F .irom0.text	00000012 ic_remove_key
+40247410 g     F .irom0.text	0000001a check_data_func
+4000ba28 g       *ABS*	00000000 hmac_sha1
+40104894 g     F .text	00000048 esf_rx_buf_alloc
+402560d4 g     F .irom0.text	00000065 chm_init
+402596dc g     F .irom0.text	00000057 dns_gethostbyname
+40240c7c g     F .irom0.text	0000000b system_get_rtc_time
+402413c8 g     F .irom0.text	00000012 wifi_station_get_auto_connect
+402646d8 g     F .irom0.text	00000004 wpa_sm_get_beacon_ie
+40254d80 g     F .irom0.text	0000000a scan_remove_bssid
+40258fe8 g     F .irom0.text	00000067 dhcps_start
+401048e8 g     F .text	00000123 esf_buf_alloc
+4024462c g     F .irom0.text	0000002f kvstore_close
+402561e4 g     F .irom0.text	00000034 chm_end_op
+40269010 g     F .irom0.text	00000019 int_to_bi
+40263d38 g     F .irom0.text	00000026 wpa_compare_rsn_ie
+4024ce6c g     F .irom0.text	000001fb pm_wakeup_init
+40252278 g     F .irom0.text	00000031 ieee80211_add_htinfo_vendor
+40267320 g     F .irom0.text	000000b1 do_svr_handshake
+4024ce0c g     F .irom0.text	00000055 pm_unmask_bt
+40101164 g     F .text	0000033a .hidden __umoddi3
+4024353c g     F .irom0.text	000000a8 MQTT_Publish
+fffff22f g       *ABS*	00000000 _memmap_cacheattr_bp_strict
+4025fee8 g     F .irom0.text	0000001d inc_byte_array
+40106290 g     F .text	00000002 ram_tx_mac_disable
+4026b97c g     F .irom0.text	00000051 SHA1_Update
+4024d5a4 g     F .irom0.text	00000015 pm_rf_is_closed
+3ffe9254 g     O .rodata	00000004 _global_impure_ptr
+4026701c g     F .irom0.text	0000002e disposable_new
+4024c5c8 g     F .irom0.text	00000034 pm_usec2rtc
+4025fe0c g     F .irom0.text	00000069 hostapd_maclist_found
+40103b00 g     F .text	000000a6 rcGetSched
+4025fd8c g     F .irom0.text	0000002e hostapd_setup_wpa_psk
+3ffeb4e4 g     O .bss	00000004 rxiq_compute_num
+40242ed4 g     F .irom0.text	00000033 uart1_tx_buffer
+40259a28 g     F .irom0.text	0000000c espconn_regist_sentcb
+402414f4 g     F .irom0.text	0000005e wifi_softap_cacl_mac
+40240e70 g     F .irom0.text	0000000d wifi_get_opmode
+40254d8c g     F .irom0.text	00000008 scan_hidden_ssid
+40100dd4 g     F .text	0000038d .hidden __udivdi3
+402581f4 g     F .irom0.text	00000036 dhcp_stop
+40244278 g     F .irom0.text	00000017 QUEUE_Gets
+4024166c g     F .irom0.text	000001ef wifi_softap_set_config
+4024894c g     F .irom0.text	0000004b chip_v6_rxmax_ext_dig
+4025a110 g     F .irom0.text	000000a6 espconn_tcp_client
+4026b9d0 g     F .irom0.text	00000055 SHA1_Final
+40002e68 g       *ABS*	00000000 ets_timer_init
+40267d08 g     F .irom0.text	00000015 x509_print
+401007a0 g     F .text	0000002c system_os_post
+4024cc24 g     F .irom0.text	00000113 pm_set_wakeup_btco
+40106494 g     F .text	00000000 .hidden __floatunsidf
+40251ac4 g     F .irom0.text	00000011 ieee80211_ht_node_cleanup
+4024ebc4 g     F .irom0.text	00000017 pp_noise_test
+40256260 g     F .irom0.text	00000026 chm_freq2index
+4025c59c g     F .irom0.text	000000a4 pbuf_copy
+401006c0 g     F .text	00000050 spi_flash_write
+4025ef74 g     F .irom0.text	000000aa tcp_rexmit
+40100460 g     F .text	000000b6 pvPortMalloc
+3ffeb418 g     O .bss	00000004 done_cb
+2222211f g       *ABS*	00000000 _memmap_cacheattr_wt_trapnull
+3ffeb4e0 g     O .bss	00000004 g_phyFuns
+40251878 g     F .irom0.text	000000e6 wifi_softap_start
+40269f60 g     F .irom0.text	00000159 bi_mod_power
+4025a944 g     F .irom0.text	0000001d espconn_igmp_leave
+401026ac g     F .text	0000003c lmacProcessAckTimeout
+3ffe872c g     O .data	00000004 __ctype_ptr
+401014c8 g     F .text	00000018 phy_change_channel
+4025b498 g     F .irom0.text	000000a9 igmp_joingroup
+4024e58c g     F .irom0.text	000000ef pm_attach
+402531c0 g     F .irom0.text	00000002 ieee80211_tx_mgt_cb
+40263f04 g     F .irom0.text	00000023 wpa_cipher_to_alg
+3ffe9268 g     O .rodata	00000008 ieee80211_opcap
+40100594 g     F .text	00000038 pvPortRealloc
+4025b1f8 g     F .irom0.text	0000005d igmp_stop
+4025a564 g     F .irom0.text	00000090 espconn_tcp_server
+40268004 g     F .irom0.text	0000016f AES_cbc_encrypt
+3fffccf0 g       *ABS*	00000000 Te0
+40256ec0 g     F .irom0.text	00000023 cnx_rc_update_age
+4025c1b8 g     F .irom0.text	0000003a netif_set_up
+40104bfc g     F .text	0000002a chm_return_home_channel
+402698a0 g     F .irom0.text	0000003d bi_free_mod
+402455d4 g     F .irom0.text	000000b3 ram_pbus_debugmode
+40000f98 g       *ABS*	00000000 ets_isr_mask
+4024c35c g     F .irom0.text	00000002 chip_v6_set_sense
+40100d6c g     F .text	0000001b strtol
+3ff00000 g       *ABS*	00000000 _dport0_literal_start
+4010220c g     F .text	0000005c lmacProcessCollisions
+4026525c g     F .irom0.text	000000c7 espconn_ssl_client
+40260050 g     F .irom0.text	000000e8 wpa_config_parse_string
+40265894 g     F .irom0.text	000000d4 do_clnt_handshake
+3ffe9340 g     O .rodata	00000010 tcp_pcb_lists
+40004a4c g       *ABS*	00000000 SPIWrite
+4026c02c g     F .irom0.text	00000044 RINGBUF_Get
+40259734 g     F .irom0.text	00000090 espconn_copy_partial
+3ffe8081 g     O .data	00000001 timer2_ms_flag
+3fff3088 g       *ABS*	00000000 _bss_end
+402548dc g     F .irom0.text	00000002 ieee80211_wme_initparams
+40241b98 g     F .irom0.text	00000008 wifi_set_promiscuous_rx_cb
+3fff2fa0 g     O .bss	000000c8 deb
+40002544 g       *ABS*	00000000 ets_uart_printf
+4025b7e0 g     F .irom0.text	00000041 ip4_addr_netmask_valid
+3fff2bec g     O .bss	00000004 tcp_tmp_pcb
+402418bc g     F .irom0.text	0000007b wifi_softap_get_station_info
+3fff2a10 g     O .bss	00000004 plink_active
+4026a49c g     F .irom0.text	000000de ssl_hmac_sha1
+40240888 g     F .irom0.text	0000001a system_upgrade_userbin_check
+402644fc g     F .irom0.text	000000ab eagle_auth_done
+40241ab0 g     F .irom0.text	00000021 wifi_set_sleep_type
+402572b8 g     F .irom0.text	000000af cnx_node_leave
+4026c438 g     F .irom0.text	00000057 RC4_setup
+40242640 g     F .irom0.text	00000022 eagle_lwip_getif
+402597c4 g     F .irom0.text	00000020 espconn_list_creat
+3fff1994 g     O .bss	00000002 scannum
+40256690 g     F .irom0.text	00000033 cnx_connect_timeout
+40100754 g     F .text	00000040 system_restore
+40243f3c g     F .irom0.text	000000b3 mqtt_msg_publish
+402575f8 g     F .irom0.text	0000005d ieee80211_recv_action
+40105b04 g     F .text	00000000 .hidden __fixdfsi
+402604ac g     F .irom0.text	00000074 wpa_init
+3fff18d8 g     O .bss	00000001 TmpSTAAPCloseAP
+3ffeb4ec g     O .bss	00000004 check_result
+3fff3088 g       *ABS*	00000000 _heap_start
+40004b1c g       *ABS*	00000000 SPIRead
+40259c84 g     F .irom0.text	0000001c espconn_gethostbyname
+40264be0 g     F .irom0.text	0000002d aes_encrypt_init
+4024c4d0 g     F .irom0.text	000000a8 slop_test
+40243be4 g     F .irom0.text	00000049 mqtt_get_total_length
+40254534 g     F .irom0.text	00000018 ieee80211_get_ratetable
+402407e8 g     F .irom0.text	00000017 system_adc_read
+401037b4 g     F .text	0000000b RC_GetRtsRate
+4025e470 g     F .irom0.text	0000004b tcp_send_fin
+4024b57c g     F .irom0.text	000001be ram_rfcal_txcap
+4025eb0c g     F .irom0.text	000002ff tcp_output
+40265dfc g     F .irom0.text	0000003e ssl_read
+40240870 g     F .irom0.text	00000017 system_upgrade_userbin_set
+402696a0 g     F .irom0.text	00000089 bi_str_import
+40001da0 g       *ABS*	00000000 ets_write_char
+4026449c g     F .irom0.text	0000003e wpa_config_bss
+40263818 g     F .irom0.text	0000004f eapol_txcb
+22222222 g       *ABS*	00000000 _memmap_cacheattr_bp_allvalid
+40102268 g     F .text	00000077 lmacProcessCollision
+40250060 g     F .irom0.text	0000002a wDev_ClearBssid
+40240574 g     F .irom0.text	00000011 vApplicationMallocFailedHook
+40266e2c g     F .irom0.text	000000b7 send_alert
+4025fdbc g     F .irom0.text	00000050 hostapd_wep_key_cmp
+40267ddc g     F .irom0.text	0000016d AES_set_key
+3ffe8b70 g     O .data	00000020 rx_gain_swp
+402502b0 g     F .irom0.text	0000011a esf_buf_setup
+22222112 g       *ABS*	00000000 _memmap_cacheattr_wt_allvalid
+402686b8 g     F .irom0.text	0000004b get_asn1_length
+3fff2be0 g     O .bss	00000004 tcp_input_pcb
+40269064 g     F .irom0.text	00000080 bi_add
+4026a588 g     F .irom0.text	0000007f ssl_obj_load
+3ffeb884 g     O .bss	00000020 lmacConfMib
+40251db4 g     F .irom0.text	00000080 ieee80211_setup_basic_htrates
+4024969c g     F .irom0.text	00000053 periodic_cal_top
+40265234 g     F .irom0.text	0000001d espconn_ssl_disconnect
+3ffeb2bc g       *ABS*	00000000 __XT_EXCEPTION_DESCS_END__
+4025ea78 g     F .irom0.text	00000089 tcp_send_empty_ack
+40250f10 g     F .irom0.text	0000007b hostap_handle_timer
+40242428 g     F .irom0.text	00000026 ets_sprintf
+402543d8 g     F .irom0.text	0000014b ieee80211_beacon_alloc
+402591f8 g     F .irom0.text	0000002a dns_setserver
+3fff20f0 g     O .bss	00000004 sta_con_timer
+4025f020 g     F .irom0.text	00000057 tcp_rexmit_fast
+402415c0 g     F .irom0.text	0000009a wifi_softap_get_config
+40242ad8 g     F .irom0.text	0000019d clock_init
+40253e54 g     F .irom0.text	000001f8 ieee80211_alloc_proberesp
+4010620c g     F .text	00000039 .hidden __umodsi3
+40102a1c g     F .text	00000058 ppRecycleRxPkt
+40256058 g     F .irom0.text	0000006e wifi_station_start
+4026c434 g     F .irom0.text	00000004 eloop_register_timeout
+40102a78 g     F .text	000000d3 ppCheckTxIdle
+40245054 g     F .irom0.text	0000005f util_make_sub_topic
+402407d4 g     F .irom0.text	00000012 system_pp_recycle_rx_pkt
+4025b840 g     F .irom0.text	00000160 ipaddr_aton
+40263ee0 g     F .irom0.text	00000024 wpa_cipher_key_len
+40242404 g     F .irom0.text	00000021 ets_vsprintf
+40105bec g     F .text	00000021 .hidden __popcountsi2
+40264e44 g     F .irom0.text	0000005c espconn_sent_packet
+40247cf0 g     F .irom0.text	00000041 ram_start_noisefloor
+4025b7b4 g     F .irom0.text	0000002b ip4_addr_isbroadcast
+40243aa4 g     F .irom0.text	00000005 MQTT_OnConnected
+40249980 g     F .irom0.text	000000ec change_bbpll160_sleep
+3ff00000 g       *ABS*	00000000 _dport0_rodata_start
+40240ff0 g     F .irom0.text	0000004b wifi_station_get_config
+3ff00000 g       *ABS*	00000000 _dport0_data_start
+4025c1b0 g     F .irom0.text	00000007 netif_set_default
+40247430 g     F .irom0.text	00000034 do_noisefloor_lsleep_v50
+4010473c g     F .text	000000ed wDev_AppendRxBlocks
+4025f974 g     F .irom0.text	00000006 udp_recv
+4024e8a8 g     F .irom0.text	00000011 pm_try_scan_unlock
+4024bb2c g     F .irom0.text	000001a4 ram_rxiq_cover_mg_mp
+40256434 g     F .irom0.text	000000d9 cnx_sta_scan_cmd
+402524a0 g     F .irom0.text	0000003b ieee80211_deliver_data
+4026a608 g     F .irom0.text	00000055 ssl_obj_memory_load
+401026e8 g     F .text	00000008 lmacProcessRtsStart
+40241384 g     F .irom0.text	0000003d wifi_station_scan
+4026c4d8 g       *ABS*	00000000 _irom0_text_end
+402697a8 g     F .irom0.text	0000007f bi_export
+4025016c g     F .irom0.text	0000003c wDev_remove_KeyEntry
+40000e04 g       *ABS*	00000000 ets_run
+40244f44 g     F .irom0.text	00000031 util_strdup
+3ffe8083 g     O .data	00000001 dhcpc_flag
+40101bc0 g     F .text	000000ce lmacProcessTxSuccess
+4024bcd0 g     F .irom0.text	0000020b ram_rfcal_rxiq
+40267238 g     F .irom0.text	000000c3 process_certificate
+4024c7dc g     F .irom0.text	0000003f pm_sleep_opt_bb_on
+402454b0 g     F .irom0.text	00000016 phy_disable_agc
+4025c1f4 g     F .irom0.text	00000024 netif_set_down
+40269828 g     F .irom0.text	00000077 bi_set_mod
+4025c278 g     F .irom0.text	0000014d pbuf_alloc
+4025c218 g     F .irom0.text	00000049 netif_set_link_up
+40100a34 g     F .text	00000013 _atoi_r
+40251960 g     F .irom0.text	000000c1 wifi_softap_stop
+40253654 g     F .irom0.text	00000039 ieee80211_add_xrates
+402465d0 g     F .irom0.text	0000004c low_power_set
+40246174 g     F .irom0.text	000000e3 chip_60_set_channel
+402441e0 g     F .irom0.text	0000001b mqtt_msg_pingreq
+40244260 g     F .irom0.text	00000017 QUEUE_Puts
+402647c4 g     F .irom0.text	00000417 rijndaelEncrypt
+40261f80 g     F .irom0.text	00000106 wpa_write_rsn_ie
+4026902c g     F .irom0.text	00000035 bi_clone
+402571f4 g     F .irom0.text	00000052 cnx_node_remove
+40242fac g     F .irom0.text	00000013 uart_reattach
+40243aac g     F .irom0.text	00000005 MQTT_OnDisconnected
+4024ef7c g     F .irom0.text	00000032 ppRegisterTxCallback
+40104af4 g     F .text	0000002d scan_pm_channel_op_cb
+40249c08 g     F .irom0.text	00000205 register_chipv6_phy
+40259bd0 g     F .irom0.text	00000041 espconn_regist_time
+40242960 g     F .irom0.text	00000042 wifiConnectCb
+3fff1340 g     O .bss	00000040 if_ctrl
+40245c58 g     F .irom0.text	00000067 ram_restart_cal
+40245480 g     F .irom0.text	00000016 phy_delete_channel
+402454e0 g     F .irom0.text	00000016 phy_set_sense
+4026704c g     F .irom0.text	00000038 disposable_free
+3ffe9310 g     O .rodata	00000004 ip_addr_broadcast
+3fff18d9 g     O .bss	00000001 PendFreeBcnEb
+40242874 g     F .irom0.text	000000d7 displayTimerExpireCb
+4024f8cc g     F .irom0.text	000000c5 rc_enable_trc
+4024a330 g     F .irom0.text	00000149 tx_pwr_backoff
+40254804 g     F .irom0.text	00000015 ieee80211_set_shortslottime
+40250440 g     F .irom0.text	00000011 ic_interface_enabled
+3ffe9320 g     O .rodata	00000012 memp_sizes
+40256e54 g     F .irom0.text	0000006c cnx_rc_update_state_metric
+40106438 g     F .text	00000018 .hidden __ashrdi3
+4025ff3c g     F .irom0.text	00000033 hex2byte
+402458b8 g     F .irom0.text	00000025 ram_chip_v6_rx_init
+40260180 g     F .irom0.text	00000012 os_random
+402557e0 g     F .irom0.text	00000263 sta_input
+4025a964 g     F .irom0.text	0000001d espconn_igmp_join
+4025f900 g     F .irom0.text	0000005a udp_connect
+40256230 g     F .irom0.text	00000030 chm_set_current_channel
+40000f74 g       *ABS*	00000000 ets_intr_lock
+4026bfe4 g     F .irom0.text	00000046 RINGBUF_Put
+3fff2b9c g     O .bss	00000004 current_header
+40242f68 g     F .irom0.text	00000028 uart0_init
+4024f8ac g     F .irom0.text	00000016 trc_onScanDone
+3ffe8c00 g     O .data	00000030 dpd_db2linear
+402454c8 g     F .irom0.text	00000016 phy_initialize_bb
+402454fc g     F .irom0.text	000000c6 ram_pbus_set_rxgain
+4026676c g     F .irom0.text	00000160 send_packet
+402504d8 g     F .irom0.text	0000000d ic_set_ptk_alg
+40002ad8 g       *ABS*	00000000 ets_strstr
+4025c064 g     F .irom0.text	00000027 netif_set_addr
+40257cc4 g     F .irom0.text	00000022 dhcp_arp_reply
+4026b5fc g     F .irom0.text	00000085 RSA_priv_key_new
+40103fac g     F .text	00000014 rcReachRetryLimit
+402689dc g     F .irom0.text	00000045 asn1_validity
+4025c850 g     F .irom0.text	0000004a pbuf_strstr
+3ffe8000 g       *ABS*	00000000 _data_start
+401007cc g     F .text	00000054 system_rtc_mem_write
+40002ecc g       *ABS*	00000000 ets_delay_us
+40000dd0 g       *ABS*	00000000 ets_task
+4025468c g     F .irom0.text	00000002 ieee80211_psq_cleanup
+402634d4 g     F .irom0.text	0000002b wpa_register
+4024eb68 g     F .irom0.text	0000005b pp_enable_noise_timer
+401050e0 g     F .text	0000004f rand
+40000f80 g       *ABS*	00000000 ets_intr_unlock
+4026ac28 g     F .irom0.text	0000001c MD5_Init
+402548e0 g     F .irom0.text	00000002 ieee80211_wme_updateparams
+40241a1c g     F .irom0.text	00000008 wifi_get_phy_mode
+3fff2a20 g     O .bss	0000003c premot
+3fff1330 g     O .bss	00000001 interface_mask
+40104654 g     F .text	00000017 wDev_ClearTxqCollisions
+4025f0f8 g     F .irom0.text	000000fc tcp_zero_window_probe
+40252c18 g     F .irom0.text	000000fc ieee80211_parse_rsn
+40244ee4 g     F .irom0.text	0000005d util_str_realloc
+40259224 g     F .irom0.text	00000013 dns_getserver
+4024599c g     F .irom0.text	00000187 readvdd33
+402671dc g     F .irom0.text	00000005 ssl_get_cipher_id
+40106458 g     F .text	00000000 .hidden __floatsisf
+402458ec g     F .irom0.text	000000a8 tsen_meas
+40244474 g     F .irom0.text	00000019 kvstore_exists
+402578b4 g     F .irom0.text	0000003b dhcp_fine_tmr
+3fff2100 g     O .bss	0000000a dhcp_rx_options_given
+3ffe9080 g     O .data	00000006 ieee80211_addr_bcast
+4024f994 g     F .irom0.text	00000008 rc_get_mask
+4024a048 g     F .irom0.text	00000106 correct_rf_ana_gain
+40266580 g     F .irom0.text	000000b0 finished_digest
+40243900 g     F .irom0.text	000000df MQTT_Connect
+3ffeb73a g     O .bss	00000001 txbk_dpdby_flag
+4026abbc g     F .irom0.text	00000059 MD2_Final
+40259070 g     F .irom0.text	000000d2 wifi_softap_set_dhcps_lease
+2222211f g       *ABS*	00000000 _memmap_cacheattr_wba_trapnull
+402420a4 g     F .irom0.text	00000360 ets_vsnprintf
+40244490 g     F .irom0.text	00000032 kvstore_get_string
+40242754 g     F .irom0.text	00000104 mqttDataCb
+402439e4 g     F .irom0.text	000000c0 MQTT_Task
+4024402c g     F .irom0.text	00000039 mqtt_msg_pubrec
+4025b9b8 g     F .irom0.text	000000c4 ipaddr_ntoa_r
+3ffeb41c g     O .bss	00000004 promiscuous_cb
+40104318 g     F .text	00000251 wDev_ProcessFiq
+40269a10 g     F .irom0.text	00000031 bi_multiply
+40262178 g     F .irom0.text	00000126 wpa_validate_wpa_ie
+40264c64 g     F .irom0.text	0000002b espconn_secure_disconnect
+4025b340 g     F .irom0.text	00000156 igmp_input
+40104c38 g     F .text	00000019 dns_tmr
+40002aa8 g       *ABS*	00000000 ets_strcmp
+40244b28 g     F .irom0.text	0000000f sntp_conn_established
+3fff2bf4 g     O .bss	00000004 tcp_bound_pcbs
+40256a98 g     F .irom0.text	000000b0 cnx_bss_alloc
+4024e54c g     F .irom0.text	00000016 pm_enable_gpio_wakeup
+3fff1380 g     O .bss	00000540 g_ic
+40266d74 g     F .irom0.text	0000004c send_change_cipher_spec
+4024cb84 g     F .irom0.text	000000a0 pm_set_sleep_btco
+4025e080 g     F .irom0.text	00000026 tcp_seg_free
+402452b0 g     F .irom0.text	000000a0 PROTO_Add
+4025c788 g     F .irom0.text	00000072 pbuf_memcmp
+402508fc g     F .irom0.text	00000028 ieee80211_find_channel_byieee
+40263510 g     F .irom0.text	00000020 wpa_set_pmk
+40247778 g     F .irom0.text	00000159 tx_pwctrl_init_cal
+4025fd10 g     F .irom0.text	00000014 hostapd_mac_comp
+4024cd3c g     F .irom0.text	000000c0 pm_set_sleep_mode
+402451a0 g     F .irom0.text	00000083 PROTO_ParseByte
+fffff11f g       *ABS*	00000000 _memmap_cacheattr_wb_strict
+40259b84 g     F .irom0.text	00000045 espconn_accept
+4024ca90 g     F .irom0.text	00000093 pm_set_wakeup_mac
+40101a18 g     F .text	00000094 lmacProcessTXStartData
+402444c8 g     F .irom0.text	0000005b kvstore_get_integer
+40250824 g     F .irom0.text	00000057 ieee80211_mhz2ieee
+4024c910 g     F .irom0.text	0000007b pm_goto_sleep
+40000454 g       *ABS*	00000000 _xtos_set_exception_handler
+4010482c g     F .text	0000002d wDev_GetBAInfo
+402664bc g     F .irom0.text	00000061 generate_master_secret
+40254d94 g     F .irom0.text	0000003d scan_add_probe_ssid
+402547dc g     F .irom0.text	00000027 ieee80211_proto_attach
+402525f0 g     F .irom0.text	0000006a ieee80211_setup_rates
+40268f90 g     F .irom0.text	0000001f bi_permanent
+4024fb4c g     F .irom0.text	000000c9 wDev_Option_Init
+4025dc70 g     F .irom0.text	000000f6 tcp_connect
+40241de8 g     F .irom0.text	0000003e wifi_status_led_install
+4026c2c0 g     F .irom0.text	000000e3 inet_chksum_pseudo_partial
+40259a50 g     F .irom0.text	0000000e espconn_regist_reconcb
+400018d4 g       *ABS*	00000000 ets_memcmp
+40001b40 g       *ABS*	00000000 mem_malloc
+40254dd4 g     F .irom0.text	00000018 scan_remove_probe_ssid
+40257504 g     F .irom0.text	00000030 ieee80211_send_action_register
+4024c9c4 g     F .irom0.text	00000034 pm_open_rf
+40244d6c g     F .irom0.text	00000142 epoch_to_clock_str
+40246630 g     F .irom0.text	0000022f test_tout
+4024d2ac g     F .irom0.text	00000035 pm_rtc_clock_cali_proc
+40243d20 g     F .irom0.text	000000b8 mqtt_get_id
+40246af0 g     F .irom0.text	0000034f set_rx_gain_cal_iq
+401029c8 g     F .text	00000016 lmacRxDone
+4010632c g     F .text	00000059 memcmp
+402599a8 g     F .irom0.text	0000000e espconn_tcp_get_max_con
+40104b68 g     F .text	00000043 chm_acquire_lock
+402424dc g     F .irom0.text	00000162 eagle_lwip_if_alloc
+4026acdc g     F .irom0.text	0000004d MD5_Final
+4024d7b8 g     F .irom0.text	00000043 pm_suspend
+3ffeb86c g     O .bss	00000002 loop_pwctrl_pwdet_error_accum_high_power
+40263b6c g     F .irom0.text	00000183 wpa_parse_wpa_ie_wpa
+3ffeb2f4 g     O .bss	00000001 user_init_flag
+4025225c g     F .irom0.text	0000001b ieee80211_add_htinfo
+3ffe910c g       *ABS*	00000000 _data_end
+4025c264 g     F .irom0.text	00000011 netif_set_link_down
+402408c4 g     F .irom0.text	0000000b system_upgrade_flag_check
+40257f34 g     F .irom0.text	0000009a dhcp_renew
+40260560 g     F .irom0.text	0000007a wpa_auth_sta_associated
+40251afc g     F .irom0.text	00000036 ieee80211_parse_htcap
+402463c4 g     F .irom0.text	00000207 chip_v6_rf_init
+40259810 g     F .irom0.text	00000065 espconn_find_connection
+40268fb0 g     F .irom0.text	00000021 bi_depermanent
+401059e0 g     F .text	00000000 .hidden __divdf3
+4025265c g     F .irom0.text	00000026 ieee80211_alloc_challenge
+40266ee4 g     F .irom0.text	00000079 process_finished
+4024fe94 g     F .irom0.text	00000095 wDev_SetMacAddress
+40244068 g     F .irom0.text	00000039 mqtt_msg_pubrel
+3ffeb230 g       *ABS*	00000000 __XT_EXCEPTION_TABLE__
+4025e32c g     F .irom0.text	00000033 tcp_eff_send_mss
+4010461c g     F .text	00000023 wDev_ProcessCollision
+40259050 g     F .irom0.text	0000001e dhcps_stop
+40241568 g     F .irom0.text	00000052 wifi_softap_set_default_ssid
+40256ee4 g     F .irom0.text	00000030 cnx_update_bss
+4024faf0 g     F .irom0.text	00000020 rc_get_trc_by_index
+4025067c g     F .irom0.text	00000056 ic_bss_info_update
+4024f240 g     F .irom0.text	000000ef pp_attach
+40259e0c g     F .irom0.text	0000001d espconn_tcp_disconnect
+4010573c g     F .text	00000000 .hidden __muldf3
+40245350 g     F .irom0.text	000000a9 PROTO_AddRb
+40002c64 g       *ABS*	00000000 timer_insert
+402504b8 g     F .irom0.text	0000000d ic_get_ptk_alg
+40242f3c g     F .irom0.text	00000028 uart0_sendStr
+402689b8 g     F .irom0.text	00000022 asn1_version
+3ffeb47c g     O .bss	00000004 default_private_key_len
+400060ec g     F *ABS*	00000000 rom_chip_v5_enable_cca
+4025f48c g     F .irom0.text	0000000f sys_restart_timeouts
+40259c44 g     F .irom0.text	0000003d espconn_delete
+4026bfb4 g     F .irom0.text	00000030 RINGBUF_Init
+40257bd4 g     F .irom0.text	000000a8 dhcp_inform
+40254f90 g     F .irom0.text	00000012 cannel_scan_connect_state
+40102818 g     F .text	0000013a lmacTxFrame
+402555f4 g     F .irom0.text	000001e8 ieee80211_sta_new_state
+40267d4c g     F .irom0.text	0000006e x509_display_error
+40245260 g     F .irom0.text	00000050 PROTO_ParseRb
+40259d84 g     F .irom0.text	00000087 espconn_tcp_sent
+402646e0 g     F .irom0.text	000000df aes_wrap
+40250a2c g     F .irom0.text	00000002 ieee80211_crypto_attach
+402536f0 g     F .irom0.text	000001ab ieee80211_send_probereq
+4024a020 g     F .irom0.text	00000028 get_rf_gain_qdb
+40249aa8 g     F .irom0.text	00000053 set_crystal_uart
+40248198 g     F .irom0.text	00000188 chip_v6_set_chan_rx_cmp
+4024b0c4 g     F .irom0.text	0000006b tx_pwctrl_bg_init
+402671e4 g     F .irom0.text	00000005 ssl_handshake_status
+40249360 g     F .irom0.text	0000018d chip_v6_initialize_bb
+40009300 g       *ABS*	00000000 rijndaelKeySetupEnc
+fffff11f g       *ABS*	00000000 _memmap_cacheattr_wt_strict
+4024d2e4 g     F .irom0.text	00000019 pm_set_sleep_time
+4024ad2c g     F .irom0.text	00000048 get_pwctrl_correct
+40106170 g     F .text	00000050 memset
+4025fe78 g     F .irom0.text	00000019 hostapd_rate_found
+40257370 g     F .irom0.text	00000181 cnx_node_join
+40249f18 g     F .irom0.text	00000099 set_rfanagain_dc_reg
+4024c75c g     F .irom0.text	00000039 get_chip_version
+4026a200 g     F .irom0.text	00000002 RNG_terminate
+40264df0 g     F .irom0.text	00000053 espconn_ssl_sent
+40262088 g     F .irom0.text	00000082 wpa_auth_gen_wpa_ie
+4024efb0 g     F .irom0.text	00000014 pp_tx_idle_timeout
+402645a8 g     F .irom0.text	0000000f wpa_neg_complete
+4024da70 g     F .irom0.text	000000de pm_shutdown
+40267300 g     F .irom0.text	00000007 ssl_version
+4024c60c g     F .irom0.text	00000023 pm_set_sleep_cycles
+40000e24 g       *ABS*	00000000 ets_post
+40269bd0 g     F .irom0.text	00000020 bi_square
+40250e54 g     F .irom0.text	0000007e ieee80211_hostap_attach
+3fff2e8c g     O .bss	00000004 psslpbuf
+401050d0 g     F .text	0000000f srand
+4025089c g     F .irom0.text	00000035 ieee80211_ieee2mhz
+40102e38 g     F .text	00000026 ppDequeueTxQ
+40259a34 g     F .irom0.text	0000000e espconn_regist_connectcb
+402456f4 g     F .irom0.text	0000006d set_rf_freq_offset
+4025fb9c g     F .irom0.text	00000014 icmp_dest_unreach
+3ff00000 g       *ABS*	00000000 _dport0_rodata_end
+40268174 g     F .irom0.text	00000186 AES_cbc_decrypt
+40246a38 g     F .irom0.text	000000a3 set_cal_rxdc
+4025e250 g     F .irom0.text	00000005 tcp_sent
+40243ddc g     F .irom0.text	0000015f mqtt_msg_connect
+40250098 g     F .irom0.text	000000d0 wDev_Insert_KeyEntry
+40002f04 g       *ABS*	00000000 ets_update_cpu_frequency
+4025c760 g     F .irom0.text	00000025 pbuf_get_at
+40104c28 g     F .text	00000007 chm_get_current_channel
+40105b4c g     F .text	00000000 .hidden __truncdfsf2
+40100c28 g     F .text	00000143 _strtol_r
+40257248 g     F .irom0.text	0000005e cnx_node_search
+40102eb8 g     F .text	00000034 ppEnqueueTxDone
+40100580 g     F .text	00000013 pvPortZalloc
+3ffe96c0 g     O .rodata	00000004 unsupported_str
+40266a4c g     F .irom0.text	0000026f basic_read
+40241ee8 g     F .irom0.text	0000003c divide
+40258854 g     F .irom0.text	0000001c node_insert_to_list
+402671d4 g     F .irom0.text	00000005 ssl_get_session_id_size
+40241b20 g     F .irom0.text	00000078 wifi_promiscuous_enable
+4024c98c g     F .irom0.text	00000038 pm_wait4wakeup
+40252b00 g     F .irom0.text	00000116 ieee80211_parse_wpa
+40249240 g     F .irom0.text	000000a1 tx_cont_en
+40243ab4 g     F .irom0.text	00000005 MQTT_OnData
+40240adc g     F .irom0.text	00000015 system_timer_reinit
+40250280 g     F .irom0.text	00000017 wDevEnableRx
+40243010 g     F .irom0.text	00000036 mqtt_tcpclient_discon_cb
+40240b14 g     F .irom0.text	0000008e system_station_got_ip_set
+4024e9e0 g     F .irom0.text	0000002c pm_sleep_for
+3ffe8b42 g     O .data	00000002 tx_rf_ana_gain
+400048ec g       *ABS*	00000000 SPIReadModeCnfig
+4025466c g     F .irom0.text	00000020 ieee80211_psq_init
+40249e30 g     F .irom0.text	0000001b dcoindex2txbbgain
+40106388 g     F .text	00000064 .hidden __divsi3
+40265e3c g     F .irom0.text	00000052 ssl_write
+40256cfc g     F .irom0.text	000000d4 cnx_remove_rc
+40250454 g     F .irom0.text	00000048 ic_disable_interface
+402575b0 g     F .irom0.text	00000030 ieee80211_recv_action_register
+4000b840 g       *ABS*	00000000 pbkdf2_sha1
+4024c57c g     F .irom0.text	00000049 wd_reset_cnt
+401053a8 g     F .text	00000000 .hidden __mulsf3
+4024a5f0 g     F .irom0.text	0000020e txiq_cover
+4024fe10 g     F .irom0.text	00000060 wDev_Initialize
+4025f884 g     F .irom0.text	0000007b udp_bind
+4025712c g     F .irom0.text	00000063 cnx_sta_associated
+4025d954 g     F .irom0.text	00000020 tcp_tmr
+40004678 g       *ABS*	00000000 Cache_Read_Enable
+4025af04 g     F .irom0.text	00000121 etharp_query
+40241d34 g     F .irom0.text	000000b0 wifi_set_macaddr
+3ffeb870 g     O .bss	00000001 tx_pwctrl_set_chan_flag
+40100a48 g     F .text	000000ff strcmp
+40001f00 g       *ABS*	00000000 ets_vprintf
+40241410 g     F .irom0.text	0000004c wifi_station_connect
+40262414 g     F .irom0.text	00000011 wpa_auth_uses_mfp
+4025b790 g     F .irom0.text	00000023 lwip_init
+4024c370 g     F .irom0.text	000000bf data_collect
+40101d04 g     F .text	00000013 lmacDiscardAgedMSDU
+40246260 g     F .irom0.text	00000064 chip_v6_set_chan_offset
+4025a8a8 g     F .irom0.text	00000031 espconn_udp_disconnect
+40266f60 g     F .irom0.text	000000bb send_certificate
+402504f8 g     F .irom0.text	0000000d ic_interface_is_p2p
+4024b36c g     F .irom0.text	000001de ram_cal_tos_v60
+4025ae18 g     F .irom0.text	000000e8 etharp_output
+40254580 g     F .irom0.text	0000000f ieee80211_phy_type_get
+40257538 g     F .irom0.text	00000012 ieee80211_send_action_unregister
+3fffc714 g       *ABS*	00000000 flashchip
+400038a4 g       *ABS*	00000000 uart_buff_switch
+40250940 g     F .irom0.text	000000ea wifi_mode_set
+3fffde10 g       *ABS*	00000000 UartDev
+4024c634 g     F .irom0.text	000000ef pm_sleep_opt
+40248dfc g     F .irom0.text	0000001b uart_wait_idle
+4026b890 g     F .irom0.text	0000001d RSA_public
+3ffe8b90 g     O .data	00000003 test_rffreq_txcap
+40245400 g     F .irom0.text	0000001c rf_init
+4024f88c g     F .irom0.text	00000020 trc_onScanStart
+40240de4 g     F .irom0.text	00000052 wifi_station_dhcpc_start
+40260340 g     F .irom0.text	00000004 wpa_auth_for_each_sta
+40003a14 g       *ABS*	00000000 Uart_Init
+4026a308 g     F .irom0.text	00000008 print_blob
+40248320 g     F .irom0.text	00000059 chip_v6_set_chan_misc
+402549c8 g     F .irom0.text	000000e0 scan_start
+4024c5fc g     F .irom0.text	00000008 pm_rtc2usec
+402483b4 g     F .irom0.text	0000035e phy_dig_spur_set
+4025b1ac g     F .irom0.text	0000000f igmp_init
+4025c190 g     F .irom0.text	0000000d netif_set_gw
+4025c4f4 g     F .irom0.text	00000017 pbuf_clen
+4024d1c8 g     F .irom0.text	0000002c lmacInitAc
+40103718 g     F .text	00000070 ppCalFrameTimes
+40240e38 g     F .irom0.text	00000036 wifi_station_dhcpc_stop
+40244b40 g     F .irom0.text	0000004f get_year
+3fff20f4 g     O .bss	00000004 g_cnx_probe_rc_list_cb
+402646b8 g     F .irom0.text	0000001a wpa_sm_deauthenticate
+401019c4 g     F .text	00000053 lmacSetAcParam
+40257068 g     F .irom0.text	00000094 cnx_sta_leave
+4025e0a8 g     F .irom0.text	00000005 tcp_setprio
+40243c30 g     F .irom0.text	00000058 mqtt_get_publish_topic
+40254d5c g     F .irom0.text	00000021 scan_add_bssid
+40249604 g     F .irom0.text	00000092 bbpll_cal
+402524e8 g     F .irom0.text	00000107 ieee80211_decap
+40245464 g     F .irom0.text	0000001c RFChannelSel
+4025f6d0 g     F .irom0.text	00000014 udp_send
+4026b6ec g     F .irom0.text	0000007e RSA_free
+40262378 g     F .irom0.text	0000009a wpa_parse_kde_ies
+401037c4 g     F .text	00000014 RC_GetAckTime
+4025c72c g     F .irom0.text	00000032 pbuf_coalesce
+4024c444 g     F .irom0.text	00000078 operation_test
+4024c4bc g     F .irom0.text	0000000e slop_wdt_feed
+40268d00 g     F .irom0.text	00000047 remove_ca_certs
+40248998 g     F .irom0.text	0000001d chip_v6_rxmax_ext
+4025c08c g     F .irom0.text	0000005c netif_remove
+40268704 g     F .irom0.text	00000022 asn1_next_obj
+40265818 g     F .irom0.text	00000077 SSLClient_new
+3ffeb871 g     O .bss	00000001 rxiq_cover_fail_num
+3ffe8b30 g     O .data	00000004 _impure_ptr
+402441fc g     F .irom0.text	0000001b mqtt_msg_pingresp
+4026a3b8 g     F .irom0.text	000000e3 ssl_hmac_md5
+40259a44 g     F .irom0.text	0000000c espconn_regist_recvcb
+402644dc g     F .irom0.text	00000014 wpa_config_assoc_ie
+4025dd70 g     F .irom0.text	00000275 tcp_slowtmr
+40263868 g     F .irom0.text	00000028 wpa_sm_set_state
+402548b4 g     F .irom0.text	00000011 ieee80211_setbasicrates
+4024bfac g     F .irom0.text	000003af dpd_init
+3ffe90c4 g     O .data	00000018 ccmp
+40240ed4 g     F .irom0.text	00000051 wifi_set_opmode
+3fff2148 g     O .bss	00000002 s
+40250ae4 g     F .irom0.text	00000048 ieee80211_getmgtframe
+3ffeb73c g     O .bss	00000001 sw_scan_mode
+4024d1fc g     F .irom0.text	00000074 lmacInit
+40265cf8 g     F .irom0.text	0000008f ssl_ctx_free
+2222211f g       *ABS*	00000000 _memmap_cacheattr_wb_trapnull
+4026353c g     F .irom0.text	00000080 wpa_set_bss
+4024185c g     F .irom0.text	00000056 wifi_softap_set_station_info
+4025361c g     F .irom0.text	00000038 ieee80211_add_rates
+402407c8 g     F .irom0.text	00000008 system_set_os_print
+40263fe0 g     F .irom0.text	0000004a wpa_cipher_put_suites
+40263500 g     F .irom0.text	0000000d wpa_set_profile
+4024ca0c g     F .irom0.text	00000083 pm_sleep_set_mac
+3fff3068 g     O .bss	0000001e buf
+4024ec00 g     F .irom0.text	00000030 pp_enable_idle_timer
+40245bd8 g     F .irom0.text	00000080 set_txcap_reg
+4024389c g     F .irom0.text	00000045 MQTT_Disconnect
+40263f2c g     F .irom0.text	00000051 wpa_cipher_to_suite
+40104a0c g     F .text	000000e2 esf_buf_recycle
+4026a314 g     F .irom0.text	000000a2 base64_decode
+4025a5fc g     F .irom0.text	0000007b espconn_tcp_delete
+40247010 g     F .irom0.text	0000030a set_rx_gain_testchip_50
+3ffeb750 g     O .bss	00000004 periodic_cal_dc_num
+40243ff0 g     F .irom0.text	00000039 mqtt_msg_puback
+40242e78 g     F .irom0.text	0000005a uart1_write_char
+40264464 g     F .irom0.text	00000037 wpa_config_profile
+40255b70 g     F .irom0.text	00000062 ieee80211_parse_wmeparams
+3ffeb2bc g       *ABS*	00000000 _bss_table_start
+4024bedc g     F .irom0.text	00000045 dpd_scale_set
+4025e260 g     F .irom0.text	00000004 tcp_accept
+40264c90 g     F .irom0.text	00000037 espconn_secure_sent
+40245b30 g     F .irom0.text	000000a7 txpwr_offset
+402436f8 g     F .irom0.text	00000117 MQTT_InitClient
+40254fa8 g     F .irom0.text	00000046 scan_connect_state
+4024eb4c g     F .irom0.text	00000015 pp_disable_noise_timer
+3ffeb736 g     O .bss	00000002 phy_freq_offset
+3fff18e0 g     O .bss	000000a4 gScanStruct
+40263370 g     F .irom0.text	00000160 wpa_sm_rx_eapol
+4024452c g     F .irom0.text	0000009e kvstore_put
+400024cc g       *ABS*	00000000 ets_printf
+4000448c g       *ABS*	00000000 Wait_SPI_Idle
+40268e18 g     F .irom0.text	00000026 asn1_find_subjectaltname
+4024a80c g     F .irom0.text	0000026a ram_rfcal_txiq
+40260194 g     F .irom0.text	0000003f os_get_random
+40243810 g     F .irom0.text	00000085 MQTT_InitLWT
+4024c724 g     F .irom0.text	0000002e pm_wakeup_opt
+40102790 g     F .text	00000082 lmacProcessTxError
+4010068c g     F .text	0000002e spi_flash_erase_sector
+40103fc4 g     F .text	000000b5 trc_NeedRTS
+401026f4 g     F .text	00000096 lmacProcessTxRtsError
+40102f28 g     F .text	00000016 ppEnqueueRxq
+400047f0 g       *ABS*	00000000 Cache_Read_Disable
+3ffeb6c8 g     O .bss	0000006e chip6_phy_init_ctrl
+4025087c g     F .irom0.text	00000015 ieee80211_chan2ieee
+401037d8 g     F .text	00000036 RC_GetCtsTime
+4025a6c4 g     F .irom0.text	000000c7 espconn_udp_sent
+4024ad84 g     F .irom0.text	0000033f tx_pwctrl_cal
+40240c90 g     F .irom0.text	000000d0 system_mktime
+40000f88 g       *ABS*	00000000 ets_isr_attach
+40102df8 g     F .text	0000003e ppFetchTxQFirstAvail
+402440e0 g     F .irom0.text	0000008d mqtt_msg_subscribe
+4024b264 g     F .irom0.text	00000063 read_sar_dout
+4024e87c g     F .irom0.text	00000029 pm_scan_lock
+40240e84 g     F .irom0.text	0000004c wifi_set_opmode_local
+402530cc g     F .irom0.text	000000f3 ieee80211_mgmt_output
+3ffe8c39 g     O .data	00000001 idle_wait_ms
+402610ac g     F .irom0.text	000000a5 wpa_auth_sm_event
+4025613c g     F .irom0.text	00000037 chm_start_op
+402426b4 g     F .irom0.text	0000007f mqttConnectedCb
+4025fc5c g     F .irom0.text	00000047 hostapd_config_defaults_bss
+3ff00000 g       *ABS*	00000000 _dport0_data_end
+40241af0 g     F .irom0.text	0000002a wifi_set_channel
+40265968 g     F .irom0.text	00000027 do_client_connect
+4024b134 g     F .irom0.text	00000129 tx_pwctrl_background
+40241ba4 g     F .irom0.text	0000005d wifi_get_ip_info
+400039d8 g       *ABS*	00000000 uart_div_modify
+3fff2bf0 g     O .bss	00000004 tcp_tw_pcbs
+4024c79c g     F .irom0.text	0000003f pm_sleep_opt_bb_off
+402599b8 g     F .irom0.text	00000013 espconn_tcp_set_max_con
+401014e4 g     F .text	0000000b phy_get_mactime
+3ffe9060 g     O .data	00000020 ieee80211_state_name
+4026c430 g     F .irom0.text	00000004 eloop_cancel_timeout
+4025f4a0 g     F .irom0.text	0000022e udp_input
+4024a4b8 g     F .irom0.text	00000085 ram_set_txbb_atten
+40268d48 g     F .irom0.text	00000035 asn1_compare_dn
+40101d18 g     F .text	00000022 lmacRecycleMPDU
+3ffe8720 g     O .data	0000000c calendar
+402646dc g     F .irom0.text	00000002 wpa_sm_disassociate
+3ffe9110 g       *ABS*	00000000 _rodata_start
+40005050 g       *ABS*	00000000 lldesc_num2link
+402469d4 g     F .irom0.text	00000002 ram_tx_mac_enable
+40254f88 g     F .irom0.text	00000007 scan_get_type
+40243680 g     F .irom0.text	00000065 MQTT_InitConnection
+400031b4 g       *ABS*	00000000 roundup2
+40259878 g     F .irom0.text	0000008e espconn_connect
+40244b1c g     F .irom0.text	00000009 sntp_get_time
+40240000 g       *ABS*	00000000 _irom0_text_start
+4025754c g     F .irom0.text	00000052 ieee80211_send_action
+4024ea14 g     F .irom0.text	0000004c pm_post
+4025bff8 g     F .irom0.text	00000002 netif_init
+40259144 g     F .irom0.text	00000053 dhcps_coarse_tmr
+4024f6e0 g     F .irom0.text	0000004a RC_SetBasicRate
+40102d30 g     F .text	00000076 ppProcessTxQ
+40241ad8 g     F .irom0.text	00000015 wifi_get_channel
+402408a4 g     F .irom0.text	00000020 system_upgrade_flag_set
+40249e10 g     F .irom0.text	00000020 txbbgain2dcoindex
+4024fa20 g     F .irom0.text	0000001a rc_disable_trc_by_interface
+4026875c g     F .irom0.text	0000005c asn1_get_int
+400018b4 g       *ABS*	00000000 ets_memcpy
+4025ba80 g     F .irom0.text	00000063 ip_route
+40247b54 g     F .irom0.text	000000f4 tx_pwctrl_init
+40100878 g     F .text	00000013 user_init
+4024d5c0 g     F .irom0.text	00000024 pm_set_sleep_type_from_upper
+4025db38 g     F .irom0.text	000000b2 tcp_listen_with_backlog
+3ffeb860 g     O .bss	00000006 tx_pwctrl_atten_init
+401005cc g     F .text	00000002 vPortInitialiseBlocks
+4025c410 g     F .irom0.text	0000006a pbuf_header
+3fff2ba8 g     O .bss	00000004 netif_default
+4025a8e0 g     F .irom0.text	00000061 espconn_udp_server
+4025e2b4 g     F .irom0.text	00000063 tcp_pcb_remove
+40000fa8 g       *ABS*	00000000 ets_isr_unmask
+3fff2a14 g     O .bss	00000004 pserver_list
+4024541c g     F .irom0.text	00000016 bb_init
+40254694 g     F .irom0.text	0000003d ieee80211_set_tim
+40245768 g     F .irom0.text	0000014e chip_v6_rxmax_ext_ana
+40259950 g     F .irom0.text	00000055 espconn_sent
+40256b48 g     F .irom0.text	00000070 cnx_rc_search
+402657bc g     F .irom0.text	00000055 espconn_ssl_server
+4026ab54 g     F .irom0.text	00000065 MD2_Update
+40263770 g     F .irom0.text	000000a5 pp_michael_mic_failure
+4025c544 g     F .irom0.text	0000001a pbuf_chain
+40241040 g     F .irom0.text	00000036 wifi_station_ap_number_set
+4025d9f8 g     F .irom0.text	00000092 tcp_abandon
+40267f58 g     F .irom0.text	000000a9 AES_convert_key
+4025e364 g     F .irom0.text	0000000a tcp_debug_state_str
+4025f234 g     F .irom0.text	00000030 tcp_timer_needed
+2222211f g       *ABS*	00000000 _memmap_cacheattr_wbna_trapnull
+40106450 g     F .text	00000000 .hidden __floatunsisf
+40257adc g     F .irom0.text	00000024 dhcp_set_struct
+4025dfe8 g     F .irom0.text	0000007c tcp_fasttmr
+4024a2c0 g     F .irom0.text	0000006d meas_tone_pwr_db
+402551a4 g     F .irom0.text	0000001e scan_check_hidden
+4024f9a8 g     F .irom0.text	00000075 rc_disable_trc
+401062bc g     F .text	00000056 ieee80211_parse_action
+40240c68 g     F .irom0.text	00000012 system_rtc_clock_cali_proc
+4024ac38 g     F .irom0.text	000000f3 get_target_power_offset
+401063ec g     F .text	00000049 .hidden __modsi3
+3ffe8c38 g     O .data	00000001 noise_now
+4024d088 g     F .irom0.text	00000029 sleep_opt_bb_on_8266
+4026c0c4 g     F .irom0.text	0000005c UTILS_StrToIP
+402443fc g     F .irom0.text	00000078 kvstore_open
+40265fac g     F .irom0.text	00000035 ssl_get_cert_dn
+402605dc g     F .irom0.text	00000009 wpa_auth_sta_no_wpa
+40002a88 g       *ABS*	00000000 ets_strcpy
+402504c8 g     F .irom0.text	0000000d ic_get_gtk_alg
+402478e0 g     F .irom0.text	0000026a tx_atten_set_interp
+40240bcc g     F .irom0.text	0000005f system_print_meminfo
+4024f888 g     F .irom0.text	00000002 trc_onDisconnect
+40263d7c g     F .irom0.text	0000003d wpa_cipher_txt
+3fff2110 g     O .bss	00000028 dhcp_rx_options_val
+402548e4 g     F .irom0.text	0000004f ieee80211_mlme_connect_bss
+402562c4 g     F .irom0.text	0000003f cnx_attach
+40244660 g     F .irom0.text	00000061 kvstore_update_number
+4000b8b4 g       *ABS*	00000000 hmac_sha1_vector
+40244170 g     F .irom0.text	00000070 mqtt_msg_unsubscribe
+40249a70 g     F .irom0.text	00000030 change_bbpll160
+4024a47c g     F .irom0.text	0000003a get_fcc_1m2m_pwr_offset
+40100a20 g     F .text	00000013 atoi
+40256c10 g     F .irom0.text	000000ec cnx_add_rc
+40240d6c g     F .irom0.text	0000003b wifi_softap_dhcps_start
+2222222f g       *ABS*	00000000 _memmap_cacheattr_bp_trapnull
+40260b78 g     F .irom0.text	000003b9 __wpa_send_eapol
+3ffe9150 g     O .rodata	00000101 _ctype_
+4024e688 g     F .irom0.text	000001c2 pm_send_nullfunc
+40240808 g     F .irom0.text	00000063 system_restart
+40259a60 g     F .irom0.text	0000000e espconn_regist_disconcb
+40249b1c g     F .irom0.text	0000009c ant_switch_init
+40243c88 g     F .irom0.text	00000096 mqtt_get_publish_data
+4024f880 g     F .irom0.text	00000005 rcGetTrc
+40103ae8 g     F .text	00000002 rcUpdateDataRxDone
+4025b5ec g     F .irom0.text	00000030 igmp_tmr
+4024b95c g     F .irom0.text	000001ca ram_rxiq_get_mis
+40242e14 g     F .irom0.text	0000005a uart0_write_char
+40249e54 g     F .irom0.text	000000b7 init_cal_dcoffset
+40248e34 g     F .irom0.text	000000a6 phy_pbus_soc_cfg
+40245498 g     F .irom0.text	00000016 phy_enable_agc
+40105608 g     F .text	00000000 .hidden __fixunssfsi
+4026629c g     F .irom0.text	00000031 add_packet
+40240c2c g     F .irom0.text	00000012 system_get_free_heap_size
+40006b08 g       *ABS*	00000000 phy_get_romfuncs
+40247320 g     F .irom0.text	000000f0 ram_get_corr_power
+402690e4 g     F .irom0.text	00000082 bi_subtract
+40240c44 g     F .irom0.text	00000023 system_get_chip_id
+4025786c g     F .irom0.text	00000047 dhcp_coarse_tmr
+402639d8 g     F .irom0.text	00000194 wpa_parse_wpa_ie_rsn
+4024ff88 g     F .irom0.text	000000d5 wDev_SetBssid
+40263cf8 g     F .irom0.text	0000003f wpa_eapol_key_mic
+40100d9c g     F .text	00000036 .hidden __muldi3
+402405e8 g     F .irom0.text	0000003a os_printf
+40100000 g       .text	00000000 _stext
+40104c60 g     F .text	00000036 espconn_port
+4025e264 g     F .irom0.text	00000008 tcp_poll
+402531c4 g     F .irom0.text	00000143 ieee80211_send_nulldata
+40100bcc g     F .text	0000005b strlen
+4024b740 g     F .irom0.text	00000213 ram_rfcal_pwrctrl
+402591a4 g     F .irom0.text	0000004e dns_init
+40250a38 g     F .irom0.text	0000004f ieee80211_crypto_encap
+4025211c g     F .irom0.text	0000001b ieee80211_add_htcap
+4024933c g     F .irom0.text	00000018 tx_cont_cfg
+4025f9b0 g     F .irom0.text	00000031 udp_new
+40250248 g     F .irom0.text	00000037 wDev_Crypto_Disable
+402505ec g     F .irom0.text	00000081 ic_set_sta
+4024ebdc g     F .irom0.text	0000001d pp_disable_idle_timer
+3ffeb755 g     O .bss	00000001 bbpll_cal_flag
+40266014 g     F .irom0.text	0000003f ssl_renegotiate
+402496fc g     F .irom0.text	0000027f register_chipv6_phy_init_param
+40240960 g     F .irom0.text	00000179 system_deep_sleep
+40104bc4 g     F .text	00000034 chm_cancel_op
+3ffeb875 g     O .bss	00000001 software_slp_reject
+40241938 g     F .irom0.text	00000032 wifi_softap_free_station_info
+402671ec g     F .irom0.text	00000021 ssl_get_config
+400060d0 g     F *ABS*	00000000 rom_chip_v5_disable_cca
+40102a08 g     F .text	0000000f ppProcessWaitQ
+3ffe9300 g     O .rodata	00000006 ethbroadcast
+3ffe9360 g     O .rodata	0000000d tcp_backoff
+40104640 g     F .text	0000000e wDev_GetTxqCollisions
+401014fc g     F .text	000000b5 pm_rtc_clock_cali
+4026017c g     F .irom0.text	00000004 os_get_time
+40004c50 g       *ABS*	00000000 gpio_init
+40243bcc g     F .irom0.text	00000015 mqtt_msg_init
+4024304c g     F .irom0.text	0000002d mqtt_tcpclient_recon_cb
+40249500 g     F .irom0.text	00000103 periodic_cal
+4025bdd8 g     F .irom0.text	000001e2 ip_output_if_opt
+402546d4 g     F .irom0.text	00000069 ieee80211_pwrsave
+40268728 g     F .irom0.text	00000034 asn1_skip_obj
+40268ec8 g     F .irom0.text	00000032 bi_initialize
+401015e8 g     F .text	0000000f lmacIsActive
+401015b8 g     F .text	0000002b clockgate_watchdog
+40244234 g     F .irom0.text	0000002b QUEUE_Init
+401022e0 g     F .text	00000004 lmacMSDUAged
+00000220 g       *ABS*	00000000 _memmap_cacheattr_bp_base
+40256304 g     F .irom0.text	00000046 cnx_sta_connect_led_timer_cb
+40267210 g     F .irom0.text	00000025 ssl_verify_cert
+40103810 g     F .text	0000003a RC_GetBlockAckTime
+4025fd28 g     F .irom0.text	00000027 hostapd_mac_comp_empty
+4024b2c8 g     F .irom0.text	00000091 ram_get_fm_sar_dout
+3ffe90f4 g     O .data	00000018 wep
+40240af8 g     F .irom0.text	0000000b system_get_time
+40246860 g     F .irom0.text	00000017 check_data_flag
+402555b8 g     F .irom0.text	00000037 sta_status_set
+4000dd68 g       *ABS*	00000000 rc4_skip
+40241c18 g     F .irom0.text	000000b9 wifi_set_ip_info
+4024db50 g     F .irom0.text	0000003f pm_reset_idle_sleep
+40252138 g     F .irom0.text	00000031 ieee80211_add_htcap_vendor
+40267ab4 g     F .irom0.text	00000086 x509_free
+40106248 g     F .text	00000048 .hidden __umulsidi3
+4026b830 g     F .irom0.text	00000022 RSA_private
+4026b76c g     F .irom0.text	000000c3 RSA_decrypt
+40261060 g     F .irom0.text	00000049 wpa_remove_ptk
+401046e0 g     F .text	0000005b wDev_SetFrameAckType
+40246880 g     F .irom0.text	00000152 get_check_flag
+40247d3c g     F .irom0.text	0000001c read_hw_noisefloor
+40247d68 g     F .irom0.text	00000153 noise_check_loop
+40103654 g     F .text	00000044 pp_post
+40265e90 g     F .irom0.text	000000a2 add_cert
+4024d7a4 g     F .irom0.text	00000002 uart_tx_flush
+3ffeb480 g     O .bss	00000004 default_certificate_len
+4026ac44 g     F .irom0.text	00000094 MD5_Update
+4025f388 g     F .irom0.text	0000004a sys_untimeout
+4025c8ac g     F .irom0.text	000004af tcp_input
+40250580 g     F .irom0.text	00000065 ic_set_vif
+40004f40 g       *ABS*	00000000 lldesc_build_chain
+4010514c g     F .text	00000000 .hidden __addsf3
+3ffeb2c8 g     O .bss	00000008 wdt_eventq
+40104670 g     F .text	00000047 wDev_SetWaitingQueue
+3ffeb738 g     O .bss	00000001 do_pwctrl_flag
+40004cd0 g       *ABS*	00000000 gpio_output_set
+4025bb64 g     F .irom0.text	00000257 ip_input
+3ff00000 g       *ABS*	00000000 _dport0_literal_end
+4024f758 g     F .irom0.text	000000c6 rcUpdatePhyMode
+40251a34 g     F .irom0.text	0000004b ieee80211_ht_attach
+4024e84c g     F .irom0.text	00000018 pm_is_waked
+40264c48 g     F .irom0.text	00000019 espconn_secure_connect
+40254944 g     F .irom0.text	00000051 ieee80211_scan_attach
+3ffe9306 g     O .rodata	00000006 ethzero
+3fff2f98 g     O .bss	00000008 mqtt_procTaskQueue
+40244218 g     F .irom0.text	0000001b mqtt_msg_disconnect
+402446c8 g     F .irom0.text	00000018 ntp_time_update
+402597e4 g     F .irom0.text	00000026 espconn_list_delete
+40241e5c g     F .irom0.text	00000088 system_uart_swap
+4025f3d8 g     F .irom0.text	000000b4 sys_check_timeouts
+402552bc g     F .irom0.text	000002d1 scan_parse_beacon
+40002a98 g       *ABS*	00000000 ets_strncpy
+402671a4 g     F .irom0.text	00000028 kill_ssl_session
+4025c0e8 g     F .irom0.text	00000037 netif_find
+4024cb2c g     F .irom0.text	00000057 pm_check_mac_idle
+40245434 g     F .irom0.text	00000030 phy_init
+402601d4 g     F .irom0.text	00000029 ets_strrchr
+402545c4 g     F .irom0.text	0000007d ieee80211_compute_duration
+40102e94 g     F .text	0000001b ppTxqUpdateBitmap
+402435e8 g     F .irom0.text	0000008c MQTT_Subscribe
+40264c10 g     F .irom0.text	0000000f aes_encrypt
+401046bc g     F .text	0000001e wDev_ClearWaitingQueue
+4025c560 g     F .irom0.text	0000003a pbuf_dechain
+4024ee58 g     F .irom0.text	00000122 ppTxPkt
+40104bac g     F .text	00000011 chm_release_lock
+
+
