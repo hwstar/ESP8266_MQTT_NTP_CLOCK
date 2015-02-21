@@ -1,1 +1,3 @@
-*.c linguist-language=C
+/ntp_clock/user/*.c linguist-language=C
+/ntp_clock/util/*.c linguist-language=C
+/ntp_clock/mqtt/*.c linguish-language=C
