@@ -33,15 +33,15 @@
 * POSSIBILITY OF SUCH DAMAGE.
  */
 
+// API includes
 #include "ets_sys.h"
-#include "driver/uart.h"
 #include "osapi.h"
-#include "mqtt.h"
-#include "wifi.h"
 #include "debug.h"
 #include "gpio.h"
 #include "user_interface.h"
 #include "mem.h"
+// Project includes
+
 
 
 

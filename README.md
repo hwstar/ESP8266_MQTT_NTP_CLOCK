@@ -5,6 +5,11 @@ This project uses the Simple Network Time Protocol (SNTP) to get the time from a
 
 ![ProjectPicture](setuppic.jpg)
 
+**Device Path**
+
+The device path encompasses subtopics command and status. Commands are sent to $devicepath/command (which the nodes subscribes to.) All status messages are
+published by the node on $devicepath/status except for power on message which is published on /node/info. the The device path is set using the patching procedure described later.
+
 **MQTT Commands**
 
 |Command| Description |
@@ -12,6 +17,20 @@ This project uses the Simple Network Time Protocol (SNTP) to get the time from a
 |TIME24:n 	| Sets display format 1 = 24 hour, 0 = 12 hour|
 |UTCOFFSET:n	| Sets offset in seconds from UTC|
 |SURVEY	| Returns WIFI survey information as seen by the node|
+|SSID:n| Query or set SSID|
+|WIFIPASS:n| Query or set WIFI password|
+|RESTART| Restarts the clock
+
+Notes:
+
+* Sending an SSID, or WIFIPASS command without a parameter will return the current value
+* SSID:n, WIFIPASS:n change not effective until next system restart
+
+Status messages which can be published:
+
+* SSID:yourssid
+* WIFIPASS|yourwifipass
+* WIFI survey data in the following format: ap:$AP;chan:$CHAN;rssi:$RSSI. Can be multiple lines. One entry per line. 
 
 **MQTT Power on Message**
 
@@ -23,29 +42,18 @@ After booting, the node publishes a message to /node/info with the following dat
 |DEVICE		| A device path (e.g. /home/lab/clock)|
 |IP ADDRESS	| The IP address assigned to the node|
 |SCHEMA		| A schema name of hwstar.ntpclock (vendor.product ala xPL)|
+|SSID		| SSID in use
 
 
 The schema may be used to design a database of supported commands for each device:
 
-connstate:online;device:/home/lab/clock;ip4:127.0.0.1;schema:hwstar.ntpclock
-
-The device path encompasses subtopics command and status. Commands are sent to $DEVICE/command (which the nodes subscribes to.) Status messages are
-published by the node on $DEVICE/status. The device path is set using the Configuration procedure described below.
+connstate:online;device:/home/lab/clock;ip4:127.0.0.1;schema:hwstar.ntpclock;ssid:yourssid
 
 **Last Will and Testament**
 
 The following will be published to /node/info if the node is not heard from by the MQTT broker:
 
 connstate:offline;device:$DEVICE
-
-**MQTT Status Messages**
-
-Status messages which can be published:
-
-WIFI Survey Data in the following format:
-AP: $AP, CHAN: $CHAN, RSSI: $RSSI
-
-Can be multiple lines. One entry per line. 
 
 **Configuration Patcher**
 

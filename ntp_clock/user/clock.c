@@ -33,15 +33,17 @@
 * POSSIBILITY OF SUCH DAMAGE.
  */
 
+// API Includes
 #include "ets_sys.h"
-#include "driver/uart.h"
 #include "osapi.h"
-#include "mqtt.h"
-#include "wifi.h"
 #include "debug.h"
 #include "gpio.h"
 #include "user_interface.h"
 #include "mem.h"
+// Project includes
+#include "driver/uart.h"
+#include "mqtt.h"
+#include "wifi.h"
 #include "sntp.h"
 #include "time_utils.h"
 #include "util.h"
@@ -57,7 +59,7 @@
 #define DSPL_COLON 0x10
 #define DSPL_DP4 0x08
 
-
+// Definition for a patcher config element
 
 struct config_info_element_tag{
 	uint8_t flags;
@@ -77,13 +79,18 @@ struct config_info_block_tag{
 }  __attribute__((__packed__));
 
 
+// Definition of a common element for MQTT command parameters
+
 typedef struct config_info_block_tag config_info_block;
 
 typedef union {
-	char str[16];
+	char* sp;
 	unsigned u;
 	int i;
 } pu;
+
+
+// Definition of an MQTT command element
 
 typedef struct {
 	const char *command;
@@ -91,9 +98,9 @@ typedef struct {
 	pu p;
 } command_element;
 
-enum {CP_NONE= 0, CP_INT, CP_BOOL};
+
 enum {WIFISSID=0, WIFIPASS, MQTTHOST, MQTTPORT, MQTTSECUR, MQTTDEVID, MQTTCLNT, MQTTPASS, MQTTKPALIV, MQTTDEVPATH, SNTPHOSTS, UTCOFFSET, SNTPPOLL, TIME24};
-enum {CMD_TIME24 = 0, CMD_UTCOFFSET, CMD_SURVEY};
+
 
 /* Configuration block */
 
@@ -119,17 +126,26 @@ LOCAL config_info_block configInfoBlock = {
 	
 	
 };
+// Definition of command codes and types
+enum {CP_NONE= 0, CP_INT, CP_BOOL, CP_QSTRING};
+enum {CMD_TIME24 = 0, CMD_UTCOFFSET, CMD_SURVEY, CMD_SSID, CMD_WIFIPASS, CMD_RESTART};
 
 LOCAL command_element commandElements[] = {
-	{.command = "TIME24", .type = CP_INT},
-	{.command = "UTCOFFSET", .type = CP_INT},
-	{.command = "SURVEY", .type = CP_NONE},
+	{.command = "time24", .type = CP_INT},
+	{.command = "utcoffset", .type = CP_INT},
+	{.command = "survey", .type = CP_NONE},
+	{.command = "ssid", .type = CP_QSTRING},
+	{.command = "wifipass", .type = CP_QSTRING},
+	{.command = "restart", .type = CP_NONE},
 	{.command = ""}
 };
 	 
+/* Local storage */
+
+	 
 LOCAL os_timer_t display_timer;
 
-MQTT_Client mqttClient;
+LOCAL MQTT_Client mqttClient;
 
 LOCAL char *sntpServerList[MAX_TIME_SERVERS + 1];
 
@@ -140,8 +156,33 @@ LOCAL char *commandTopic;
 LOCAL char *statusTopic;
 LOCAL flash_handle_s *configHandle;
 
+/**
+ * Handle qstring command
+ */
+ 
+LOCAL void ICACHE_FLASH_ATTR handleQstringCommand(char *new_value, command_element *ce)
+{
+	char *buf = util_zalloc(128);
+	
+	
+	if(!new_value){
+		const char *cur_value = kvstore_get_string(configHandle, ce->command);
+		os_sprintf(buf, "%s:%s", ce->command, cur_value);
+		util_free(cur_value);
+		INFO("Query Result: %s\r\n", buf );
+		MQTT_Publish(&mqttClient, statusTopic, buf, os_strlen(buf), 0, 0);
+	}
+	else{
+		util_free(ce->p.sp); // Free old value
+		ce->p.sp = util_strdup(new_value); // Copy new value to new string
+		kvstore_put(configHandle, ce->command, ce->p.sp);
+	}
 
-/*
+	util_free(buf);
+
+}
+
+/**
  * Wifi connect callback
  */
 
@@ -161,7 +202,7 @@ void ICACHE_FLASH_ATTR wifiConnectCb(uint8_t status)
 	}
 }
 
-/*
+/**
  * Survey complete,
  * publish results
  */
@@ -179,7 +220,7 @@ survey_complete_cb(void *arg, STATUS status)
 		char *buf = util_zalloc(SURVEY_CHUNK_SIZE);
 		bss = bss->next.stqe_next; //ignore first
 		for(i = 2; (bss); i++){
-			os_sprintf(strlen(buf)+ buf, "AP: %s, CHAN: %d, RSSI: %d\r\n", bss->ssid, bss->channel, bss->rssi);
+			os_sprintf(strlen(buf)+ buf, "ap:%s;chan:%d;rssi:%d\r\n", bss->ssid, bss->channel, bss->rssi);
 			bss = bss->next.stqe_next;
 			buf = util_str_realloc(buf, i * SURVEY_CHUNK_SIZE);
 		}
@@ -192,7 +233,7 @@ survey_complete_cb(void *arg, STATUS status)
 }
 
 
-/*
+/**
  * MQTT Connect call back
  */
  
@@ -207,12 +248,13 @@ void ICACHE_FLASH_ATTR mqttConnectedCb(uint32_t *args)
 	
 	// Publish who we are and where we live
 	wifi_get_ip_info(STATION_IF, &ipConfig);
-	os_sprintf(buf, "connstate:online;device:%s;ip4:%d.%d.%d.%d;schema:hwstar.ntpclock",
+	os_sprintf(buf, "connstate:online;device:%s;ip4:%d.%d.%d.%d;schema:hwstar.ntpclock;ssid:%s",
 			configInfoBlock.e[MQTTDEVPATH].value,
 			*((uint8_t *) &ipConfig.ip.addr),
 			*((uint8_t *) &ipConfig.ip.addr + 1),
 			*((uint8_t *) &ipConfig.ip.addr + 2),
-			*((uint8_t *) &ipConfig.ip.addr + 3));
+			*((uint8_t *) &ipConfig.ip.addr + 3),
+			commandElements[CMD_SSID].p.sp);
 
 	INFO("MQTT Node info: %s\r\n", buf);
 
@@ -224,7 +266,7 @@ void ICACHE_FLASH_ATTR mqttConnectedCb(uint32_t *args)
 	util_free(buf);
 }
 
-/*
+/**
  * MQTT Disconnect call back
  */
  
@@ -235,7 +277,7 @@ void ICACHE_FLASH_ATTR mqttDisconnectedCb(uint32_t *args)
 	INFO("MQTT: Disconnected\r\n");
 }
 
-/*
+/**
  * MQTT published call back
  */
 
@@ -245,7 +287,7 @@ void ICACHE_FLASH_ATTR mqttPublishedCb(uint32_t *args)
 	INFO("MQTT: Published\r\n");
 }
 
-/*
+/**
  * MQTT Data call back
  */
 
@@ -263,24 +305,25 @@ void ICACHE_FLASH_ATTR mqttDataCb(uint32_t *args, const char* topic, uint32_t to
 	INFO("Receive topic: %s, data: %s \r\n", topicBuf, dataBuf);
 	
 	if (!os_strcmp(topicBuf, commandTopic)){
-		bool update = FALSE;
 		INFO("Command topic received\r\n");	
 		// Decode command
 		for(i = 0; commandElements[i].command[0]; i++){
 			command_element *ce = &commandElements[i];
+			uint8_t cmd_len = strlen(ce->command);
 			//INFO("Trying %s\r\n", ce->command);
-			if(CP_NONE == ce->type){
-				uint8_t cmd_len = strlen(ce->command);
+			if(CP_NONE == ce->type){ // Parameterless commands
 				if(util_match_stringi(dataBuf, ce->command, cmd_len)){
-					if(CMD_SURVEY == i){ /* SURVEY? */
+					if(CMD_SURVEY == i){ // SURVEY? 
 						wifi_station_scan(NULL, survey_complete_cb);
 						break;
 					}
-				}
-				
+					if(CMD_RESTART == i){ // RESTART?
+						util_restart();
+					}
+				}	
 			}
-			
-			if((CP_INT == ce->type) || (CP_BOOL == ce->type)){
+		
+			if((CP_INT == ce->type) || (CP_BOOL == ce->type)){ // Integer and bool
 				if(util_parse_command_int(dataBuf, ce->command, &ce->p.i)){
 					//INFO("Match\r\n");
 					if(CP_BOOL == ce->type)
@@ -292,18 +335,24 @@ void ICACHE_FLASH_ATTR mqttDataCb(uint32_t *args, const char* topic, uint32_t to
 				}
 					
 			}
+			if(CP_QSTRING == ce->type){ // Query strings
+				char *val;
+				if(util_parse_command_qstring(dataBuf, ce->command,  &val)){
+					if((CMD_SSID == i) || (CMD_WIFIPASS == i)){ // SSID or WIFIPASS?
+						handleQstringCommand(val, ce);
+					}
+				}
+			}
 			
 		}
-
-	
+		kvstore_flush(configHandle); // Flush any changes back to the kvs		
 	}
 	
-		
 	util_free(topicBuf);
 	util_free(dataBuf);
 }
 
-/*
+/**
  * Callback to update LED display
  */
 
@@ -345,6 +394,9 @@ void ICACHE_FLASH_ATTR displayTimerExpireCb(void *notUsed)
 	uart1_tx_buffer(clkStr, 8);
 }
 
+/**
+ * Initialization
+ */
 
 void ICACHE_FLASH_ATTR clock_init(void)
 {
@@ -365,24 +417,29 @@ void ICACHE_FLASH_ATTR clock_init(void)
 	// Read in the config sector from flash
 	configHandle = kvstore_open(KVS_DEFAULT_LOC);
 	
-	// Check for default configuration overrides
+	const char *ssidKey = commandElements[CMD_SSID].command;
+	const char *WIFIPassKey = commandElements[CMD_WIFIPASS].command;
 	
-	if(!kvstore_exists(configHandle, commandElements[CMD_UTCOFFSET].command)){
+	// Check for default configuration overrides
+		// Check for default configuration overrides
+	if(!kvstore_exists(configHandle, ssidKey)){ // if no ssid, assume the rest of the defaults need to be set as well
+		kvstore_put(configHandle, ssidKey, configInfoBlock.e[WIFISSID].value);
+		kvstore_put(configHandle, WIFIPassKey, configInfoBlock.e[WIFIPASS].value);
 		kvstore_put(configHandle, commandElements[CMD_UTCOFFSET].command, configInfoBlock.e[UTCOFFSET].value);
-	}
-	if(!kvstore_exists(configHandle, commandElements[CMD_TIME24].command)){
 		kvstore_put(configHandle, commandElements[CMD_TIME24].command, configInfoBlock.e[TIME24].value);
+
+		// Write the KVS back out to flash	
+	
+		kvstore_flush(configHandle);
 	}
+	
 	
 	// Get the configurations we need from the KVS
 	
-	kvstore_get_integer(configHandle,  commandElements[CMD_UTCOFFSET].command, &commandElements[CMD_UTCOFFSET].p.i);
-	kvstore_get_integer(configHandle, commandElements[CMD_TIME24].command, &commandElements[CMD_TIME24].p.i);
-	
-		
-	// Write the KVS back out to flash	
-	
-	kvstore_flush(configHandle);
+	kvstore_get_integer(configHandle,  commandElements[CMD_UTCOFFSET].command, &commandElements[CMD_UTCOFFSET].p.i); // Retrieve UTC offset
+	kvstore_get_integer(configHandle, commandElements[CMD_TIME24].command, &commandElements[CMD_TIME24].p.i); // Retrieve 12/24 hour time flag
+	commandElements[CMD_SSID].p.sp = kvstore_get_string(configHandle, ssidKey); // Retrieve SSID
+	commandElements[CMD_WIFIPASS].p.sp = kvstore_get_string(configHandle, WIFIPassKey); // Retrieve WIFI Pass
 	
 	
 	// Set Non KVS configurations 
@@ -433,8 +490,8 @@ void ICACHE_FLASH_ATTR clock_init(void)
 
 	/* Attempt WIFI connection */
 	
-	uint8_t *ssid = configInfoBlock.e[WIFISSID].value;
-	uint8_t *wifipass = configInfoBlock.e[WIFIPASS].value;
+	char *ssid = commandElements[CMD_SSID].p.sp;
+	char *wifipass = commandElements[CMD_WIFIPASS].p.sp;
 	
 	INFO("Attempting connection with: %s\r\n", ssid);
 	INFO("Root topic: %s\r\n", configInfoBlock.e[MQTTDEVPATH].value);
