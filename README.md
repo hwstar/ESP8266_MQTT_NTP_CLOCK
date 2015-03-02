@@ -10,7 +10,16 @@ This project uses the Simple Network Time Protocol (SNTP) to get the time from a
 The device path encompasses subtopics command and status. Commands are sent to $devicepath/command (which the nodes subscribes to.) All status messages are
 published by the node on $devicepath/status except for power on message which is published on /node/info. the The device path is set using the patching procedure described later.
 
-**MQTT Commands**
+
+**Control Messages**
+
+Control messages are received by all nodes on /node/control. These are meant to be used to interrogate the nodes connected to the network, 
+and perform other system-wide control functions.
+
+One control message is currently supported: *muster*. This directs the node to re-send the node configuration information to /node/info. See the power on message below for further details
+
+
+**Command Messages**
 
 |Command| Description |
 |-------| ----------- |
@@ -29,7 +38,7 @@ Notes:
 Status messages which can be published:
 
 * SSID:yourssid
-* WIFIPASS|yourwifipass
+* WIFIPASS:yourwifipass
 * WIFI survey data in the following format: ap:$AP;chan:$CHAN;rssi:$RSSI. Can be multiple lines. One entry per line. 
 
 **MQTT Power on Message**

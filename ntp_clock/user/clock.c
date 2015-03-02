@@ -154,7 +154,40 @@ LOCAL pollingInterval;
 LOCAL wifiStatus;
 LOCAL char *commandTopic;
 LOCAL char *statusTopic;
+LOCAL char *controlTopic = "/node/control";
+LOCAL char *infoTopic = "/node/info";
 LOCAL flash_handle_s *configHandle;
+
+
+/**
+ * Publish connection info
+ */
+ 
+LOCAL void ICACHE_FLASH_ATTR publishConnInfo(MQTT_Client *client)
+{
+	struct ip_info ipConfig;
+	char *buf = util_zalloc(256);	
+		
+	// Publish who we are and where we live
+	wifi_get_ip_info(STATION_IF, &ipConfig);
+	os_sprintf(buf, "connstate:online;device:%s;ip4:%d.%d.%d.%d;schema:hwstar.relaynode;ssid:%s",
+			configInfoBlock.e[MQTTDEVPATH].value,
+			*((uint8_t *) &ipConfig.ip.addr),
+			*((uint8_t *) &ipConfig.ip.addr + 1),
+			*((uint8_t *) &ipConfig.ip.addr + 2),
+			*((uint8_t *) &ipConfig.ip.addr + 3),
+			commandElements[CMD_SSID].p.sp);
+
+	INFO("MQTT Node info: %s\r\n", buf);
+
+	// Publish
+	MQTT_Publish(client, infoTopic, buf, os_strlen(buf), 0, 0);
+	
+	// Free the buffer
+	util_free(buf);
+	
+}
+
 
 /**
  * Handle qstring command
@@ -239,31 +272,20 @@ survey_complete_cb(void *arg, STATUS status)
  
 void ICACHE_FLASH_ATTR mqttConnectedCb(uint32_t *args)
 {
-	struct ip_info ipConfig;
-	MQTT_Client* client = (MQTT_Client*)args;
-	char *buf = util_zalloc(256);	
 
+	MQTT_Client* client = (MQTT_Client*)args;
 	
 	INFO("MQTT: Connected\r\n");
 	
-	// Publish who we are and where we live
-	wifi_get_ip_info(STATION_IF, &ipConfig);
-	os_sprintf(buf, "connstate:online;device:%s;ip4:%d.%d.%d.%d;schema:hwstar.ntpclock;ssid:%s",
-			configInfoBlock.e[MQTTDEVPATH].value,
-			*((uint8_t *) &ipConfig.ip.addr),
-			*((uint8_t *) &ipConfig.ip.addr + 1),
-			*((uint8_t *) &ipConfig.ip.addr + 2),
-			*((uint8_t *) &ipConfig.ip.addr + 3),
-			commandElements[CMD_SSID].p.sp);
-
-	INFO("MQTT Node info: %s\r\n", buf);
-
-	MQTT_Publish(client, "/node/info", buf, os_strlen(buf), 0, 0);
+	publishConnInfo(client);
 	
+	// Subscribe to the control topic
+	MQTT_Subscribe(client, controlTopic, 0);
+
 	// Subscribe to the command topic
     MQTT_Subscribe(client, commandTopic, 0);
 
-	util_free(buf);
+
 }
 
 /**
@@ -304,7 +326,15 @@ void ICACHE_FLASH_ATTR mqttDataCb(uint32_t *args, const char* topic, uint32_t to
 
 	INFO("Receive topic: %s, data: %s \r\n", topicBuf, dataBuf);
 	
-	if (!os_strcmp(topicBuf, commandTopic)){
+	// Control Message?
+	if(!os_strcmp(topicBuf, controlTopic)){
+		if(util_match_stringi(dataBuf, "muster", 6)){
+			publishConnInfo(&mqttClient);
+		}
+	}
+	
+	// Command Message?
+	else if (!os_strcmp(topicBuf, commandTopic)){
 		INFO("Command topic received\r\n");	
 		// Decode command
 		for(i = 0; commandElements[i].command[0]; i++){
