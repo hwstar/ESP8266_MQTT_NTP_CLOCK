@@ -56,7 +56,7 @@ After booting, the node publishes a message to /node/info with the following dat
 
 The schema may be used to design a database of supported commands for each device:
 
-connstate:online;device:/home/lab/clock;ip4:127.0.0.1;schema:hwstar.ntpclock;ssid:yourssid
+muster{connstate:online,device:/home/lab/clock,ip4:127.0.0.1,schema:hwstar.ntpclock,ssid:yourssid}
 
 **Last Will and Testament**
 
