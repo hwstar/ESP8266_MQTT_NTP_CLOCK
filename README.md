@@ -50,13 +50,13 @@ After booting, the node publishes a message to /node/info with the following dat
 |CONNSTATE	| Indicates device is on line|
 |DEVICE		| A device path (e.g. /home/lab/clock)|
 |IP ADDRESS	| The IP address assigned to the node|
-|SCHEMA		| A schema name of hwstar.ntpclock (vendor.product ala xPL)|
+|SCHEMA		| A schema name of hwstar_ntpclock (vendor_product)|
 |SSID		| SSID in use
 
 
 The schema may be used to design a database of supported commands for each device:
 
-muster{connstate:online,device:/home/lab/clock,ip4:127.0.0.1,schema:hwstar.ntpclock,ssid:yourssid}
+muster{connstate:online,device:/home/lab/clock,ip4:127.0.0.1,schema:hwstar_ntpclock,ssid:yourssid}
 
 **Last Will and Testament**
 
