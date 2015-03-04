@@ -62,7 +62,7 @@ muster{connstate:online,device:/home/lab/clock,ip4:127.0.0.1,schema:hwstar_ntpcl
 
 The following will be published to /node/info if the node is not heard from by the MQTT broker:
 
-connstate:offline;device:$DEVICE
+muster{connstate:offline,device:$DEVICE}
 
 **Configuration Patcher**
 
