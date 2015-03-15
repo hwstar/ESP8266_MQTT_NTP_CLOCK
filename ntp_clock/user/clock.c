@@ -127,12 +127,12 @@ LOCAL config_info_block configInfoBlock = {
 	
 };
 // Definition of command codes and types
-enum {CP_NONE= 0, CP_INT, CP_BOOL, CP_QSTRING};
+enum {CP_NONE= 0, CP_INT, CP_BOOL, CP_QSTRING, CP_QINT, CP_QBOOL};
 enum {CMD_TIME24 = 0, CMD_UTCOFFSET, CMD_SURVEY, CMD_SSID, CMD_WIFIPASS, CMD_RESTART};
 
 LOCAL command_element commandElements[] = {
-	{.command = "time24", .type = CP_INT},
-	{.command = "utcoffset", .type = CP_INT},
+	{.command = "time24", .type = CP_QBOOL},
+	{.command = "utcoffset", .type = CP_QINT},
 	{.command = "survey", .type = CP_NONE},
 	{.command = "ssid", .type = CP_QSTRING},
 	{.command = "wifipass", .type = CP_QSTRING},
@@ -323,6 +323,7 @@ void ICACHE_FLASH_ATTR mqttDataCb(uint32_t *args, const char* topic, uint32_t to
 	
 	topicBuf = util_strndup(topic, topic_len);
 	dataBuf = util_strndup(data, data_len);
+	char *buf = util_zalloc(256); // Working buffer
 
 	INFO("Receive topic: %s, data: %s \r\n", topicBuf, dataBuf);
 	
@@ -339,7 +340,7 @@ void ICACHE_FLASH_ATTR mqttDataCb(uint32_t *args, const char* topic, uint32_t to
 		// Decode command
 		for(i = 0; commandElements[i].command[0]; i++){
 			command_element *ce = &commandElements[i];
-			uint8_t cmd_len = strlen(ce->command);
+			uint8_t cmd_len = os_strlen(ce->command);
 			//INFO("Trying %s\r\n", ce->command);
 			if(CP_NONE == ce->type){ // Parameterless commands
 				if(util_match_stringi(dataBuf, ce->command, cmd_len)){
@@ -353,17 +354,23 @@ void ICACHE_FLASH_ATTR mqttDataCb(uint32_t *args, const char* topic, uint32_t to
 				}	
 			}
 		
-			if((CP_INT == ce->type) || (CP_BOOL == ce->type)){ // Integer and bool
-				if(util_parse_command_int(dataBuf, ce->command, &ce->p.i)){
+			if((CP_QINT == ce->type) || (CP_QBOOL == ce->type)){ // Integer and bool
+				uint8_t cmd_len = os_strlen(ce->command);
+				if(util_match_stringi(dataBuf, ce->command, cmd_len)){
 					//INFO("Match\r\n");
-					if(CP_BOOL == ce->type)
-						ce->p.i= (ce->p.i) ? 1: 0;
-					//INFO("%s = %d\r\n", ce->command, ce->p.i);
-					if(!kvstore_update_number(configHandle, ce->command, ce->p.i))
-						INFO("Error storing integer parameter");
-					break;
+					if(util_parse_param_int(dataBuf + cmd_len, &ce->p.i)){
+						if(CP_QBOOL == ce->type)
+							ce->p.i = (ce->p.i) ? 1: 0;
+						//INFO("%s = %d\r\n", ce->command, ce->p.i);
+						if(!kvstore_update_number(configHandle, ce->command, ce->p.i))
+							INFO("Error storing integer parameter");
+						break;
+					}
+					else { // Return current setting
+						os_sprintf(buf, "%s:%d", ce->command, ce->p.i);
+						MQTT_Publish(&mqttClient, statusTopic, buf, os_strlen(buf), 0, 0);
+					}
 				}
-					
 			}
 			if(CP_QSTRING == ce->type){ // Query strings
 				char *val;
@@ -377,7 +384,7 @@ void ICACHE_FLASH_ATTR mqttDataCb(uint32_t *args, const char* topic, uint32_t to
 		}
 		kvstore_flush(configHandle); // Flush any changes back to the kvs		
 	}
-	
+	util_free(buf);
 	util_free(topicBuf);
 	util_free(dataBuf);
 }

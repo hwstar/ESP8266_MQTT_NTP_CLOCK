@@ -154,17 +154,11 @@ bool ICACHE_FLASH_ATTR util_match_stringi(const char *s1, const char *s2, unsign
  * Parse a command with a single numeric parameter
  */
  
-bool ICACHE_FLASH_ATTR util_parse_command_int(const char *str, const char *command,  int *val)
+bool ICACHE_FLASH_ATTR util_parse_param_int(const char *str, int *val)
 {
-	unsigned len = os_strlen(command);
-	
-	if(!util_match_stringi(str, command, os_strlen(command)))
+	if ((!*str) || (*str != ':'))
 		return FALSE;
-	if ((!str[len]) || (str[len] != ':'))
-		return FALSE;
-	
-	*val = atoi(str + len + 1);
-	
+	*val = atoi(str + 1);
 	return TRUE;
 }
 

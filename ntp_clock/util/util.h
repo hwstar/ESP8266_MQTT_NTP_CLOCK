@@ -19,7 +19,7 @@ char * util_make_sub_topic(const char *rootTopic, char *subTopic);
 char * util_strdup(const char *s);
 char * util_strndup(const char *s, int len);
 bool util_match_stringi(const char *s1, const char *s2, unsigned len);
-bool util_parse_command_int(const char *str, const char *command,  int *val);
+bool util_parse_param_int(const char *str, int *val);
 bool util_parse_command_qstring(char *str, const char *command,  char **val);
 int util_atoi(const char *num);
 
