@@ -99,7 +99,7 @@ typedef struct {
 } command_element;
 
 
-enum {WIFISSID=0, WIFIPASS, MQTTHOST, MQTTPORT, MQTTSECUR, MQTTDEVID, MQTTCLNT, MQTTPASS, MQTTKPALIV, MQTTDEVPATH, SNTPHOSTS, UTCOFFSET, SNTPPOLL, TIME24};
+enum {WIFISSID=0, WIFIPASS, MQTTHOST, MQTTPORT, MQTTSECUR, MQTTDEVID, MQTTUSER, MQTTPASS, MQTTKPALIV, MQTTDEVPATH, SNTPHOSTS, UTCOFFSET, SNTPPOLL, TIME24};
 
 
 /* Configuration block */
@@ -114,9 +114,9 @@ LOCAL config_info_block configInfoBlock = {
 	.e[MQTTHOST] = {.flags = CONFIG_FLD_REQD, .key = "MQTTHOST", .value="your_mqtt_broker_hostname_here"}, // May also be an IP address
 	.e[MQTTPORT] = {.key = "MQTTPORT", .value="1883"}, // destination Port for mqtt broker
 	.e[MQTTSECUR] = {.key = "MQTTSECUR",.value="0"}, // Security 0 - no encryption
-	.e[MQTTDEVID] = {.key = "MQTTDEVID", .value="dev_id"}, // Security Unique device ID
-	.e[MQTTCLNT] = {.key = "MQTTCLNT", .value="your_mqtt_client_name_here"}, // Only relevant if MQTTSECUR is other than 0
-	.e[MQTTPASS] = {.key = "MQTTPASS", .value="its_a_secret"},// Only relevant if MQTTSECUR is other than 0
+	.e[MQTTDEVID] = {.key = "MQTTDEVID", .value="dev_id"}, // Unique device ID
+	.e[MQTTUSER] = {.key = "MQTTUSER", .value="your_mqtt_user_name_here"},  // MQTT user if ACL's are used
+	.e[MQTTPASS] = {.key = "MQTTPASS", .value="its_a_secret"}, // MQTT password if ACL's are used
 	.e[MQTTKPALIV] = {.key = "MQTTKPALIV", .value="120"}, // Keepalive interval
 	.e[MQTTDEVPATH] = {.flags = CONFIG_FLD_REQD, .key = "MQTTDEVPATH", .value = "/home/lab/clock"}, // Device path
 	.e[SNTPHOSTS] = {.key = "SNTPHOSTS", .value = "pool.ntp.org"}, // Comma separated list of SNTP hosts
@@ -495,7 +495,7 @@ void ICACHE_FLASH_ATTR clock_init(void)
 	(uint8_t) atoi(configInfoBlock.e[MQTTSECUR].value));
 
 	MQTT_InitClient(&mqttClient, configInfoBlock.e[MQTTDEVID].value, 
-	configInfoBlock.e[MQTTCLNT].value, configInfoBlock.e[MQTTPASS].value,
+	configInfoBlock.e[MQTTUSER].value, configInfoBlock.e[MQTTPASS].value,
 	atoi(configInfoBlock.e[MQTTKPALIV].value), 1);
 
 	// Last will and testament
