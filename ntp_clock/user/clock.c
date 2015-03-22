@@ -40,6 +40,7 @@
 #include "gpio.h"
 #include "user_interface.h"
 #include "mem.h"
+#include "jsonparse.h"
 // Project includes
 #include "driver/uart.h"
 #include "mqtt.h"
@@ -170,7 +171,7 @@ LOCAL void ICACHE_FLASH_ATTR publishConnInfo(MQTT_Client *client)
 		
 	// Publish who we are and where we live
 	wifi_get_ip_info(STATION_IF, &ipConfig);
-	os_sprintf(buf, "muster{connstate:online,device:%s,ip4:%d.%d.%d.%d,schema:hwstar_ntpclock,ssid:%s}",
+	os_sprintf(buf, "{\"muster\":{\"connstate\":\"online\",\"device\":\"%s\",\"ip4\":\"%d.%d.%d.%d\",\"schema\":\"hwstar_ntpclock\",\"ssid\":\"%s\"}}",
 			configInfoBlock.e[MQTTDEVPATH].value,
 			*((uint8_t *) &ipConfig.ip.addr),
 			*((uint8_t *) &ipConfig.ip.addr + 1),
@@ -200,15 +201,16 @@ LOCAL void ICACHE_FLASH_ATTR handleQstringCommand(char *new_value, command_eleme
 	
 	if(!new_value){
 		const char *cur_value = kvstore_get_string(configHandle, ce->command);
-		os_sprintf(buf, "%s:%s", ce->command, cur_value);
+		os_sprintf(buf, "{\"%s\":\"%s\"}", ce->command, cur_value);
 		util_free(cur_value);
 		INFO("Query Result: %s\r\n", buf );
 		MQTT_Publish(&mqttClient, statusTopic, buf, os_strlen(buf), 0, 0);
 	}
 	else{
 		util_free(ce->p.sp); // Free old value
-		ce->p.sp = util_strdup(new_value); // Copy new value to new string
+		ce->p.sp = new_value; // Save reference to new value
 		kvstore_put(configHandle, ce->command, ce->p.sp);
+		
 	}
 
 	util_free(buf);
@@ -246,17 +248,24 @@ survey_complete_cb(void *arg, STATUS status)
 {
 	struct bss_info *bss = arg;
 	
-	#define SURVEY_CHUNK_SIZE 128
+	#define SURVEY_CHUNK_SIZE 256
 	
 	if(status == OK){
 		uint8_t i;
 		char *buf = util_zalloc(SURVEY_CHUNK_SIZE);
 		bss = bss->next.stqe_next; //ignore first
 		for(i = 2; (bss); i++){
-			os_sprintf(strlen(buf)+ buf, "ap:%s;chan:%d;rssi:%d\r\n", bss->ssid, bss->channel, bss->rssi);
+			if(2 == i)
+				os_sprintf(strlen(buf) + buf,"{\"access_points\":[");
+			else
+				os_strcat(buf,",");
+			os_sprintf(strlen(buf)+ buf, "\"%s\":{\"chan\":\"%d\",\"rssi\":\"%d\"}", bss->ssid, bss->channel, bss->rssi);
 			bss = bss->next.stqe_next;
-			buf = util_str_realloc(buf, i * SURVEY_CHUNK_SIZE);
+			buf = util_str_realloc(buf, i * SURVEY_CHUNK_SIZE); // Grow buffer
 		}
+		if(buf[0])
+			os_strcat(buf,"]}");
+		
 		INFO("Survey Results:\r\n", buf);
 		INFO(buf);
 		MQTT_Publish(&mqttClient, statusTopic, buf, os_strlen(buf), 0, 0);
@@ -316,6 +325,8 @@ void ICACHE_FLASH_ATTR mqttPublishedCb(uint32_t *args)
 void ICACHE_FLASH_ATTR mqttDataCb(uint32_t *args, const char* topic, uint32_t topic_len, const char *data, uint32_t data_len)
 {
 	char *topicBuf,*dataBuf;
+	struct jsonparse_state state;
+	char command[32];
 	int i;
 	
 	MQTT_Client* client = (MQTT_Client*)args;
@@ -329,21 +340,27 @@ void ICACHE_FLASH_ATTR mqttDataCb(uint32_t *args, const char* topic, uint32_t to
 	
 	// Control Message?
 	if(!os_strcmp(topicBuf, controlTopic)){
-		if(util_match_stringi(dataBuf, "muster", 6)){
+		jsonparse_setup(&state, dataBuf, data_len);
+		if (util_parse_json_param(&state, "control", command, sizeof(command)) != 2)
+			return; /* Command not present in json object */
+		if(!os_strcmp(command, "muster")){
 			publishConnInfo(&mqttClient);
 		}
 	}
 	
 	// Command Message?
-	else if (!os_strcmp(topicBuf, commandTopic)){
-		INFO("Command topic received\r\n");	
-		// Decode command
+	else if (!os_strcmp(topicBuf, commandTopic)){ // Check for match to command topic
+		// Parse command
+		jsonparse_setup(&state, dataBuf, data_len);
+		if (util_parse_json_param(&state, "command", command, sizeof(command)) != 2)
+			return; /* Command not present in json object */
+				
 		for(i = 0; commandElements[i].command[0]; i++){
 			command_element *ce = &commandElements[i];
 			uint8_t cmd_len = os_strlen(ce->command);
 			//INFO("Trying %s\r\n", ce->command);
 			if(CP_NONE == ce->type){ // Parameterless commands
-				if(util_match_stringi(dataBuf, ce->command, cmd_len)){
+				if(!os_strcmp(dataBuf, ce->command)){
 					if(CMD_SURVEY == i){ // SURVEY? 
 						wifi_station_scan(NULL, survey_complete_cb);
 						break;
@@ -355,26 +372,25 @@ void ICACHE_FLASH_ATTR mqttDataCb(uint32_t *args, const char* topic, uint32_t to
 			}
 		
 			if((CP_QINT == ce->type) || (CP_QBOOL == ce->type)){ // Integer and bool
-				uint8_t cmd_len = os_strlen(ce->command);
-				if(util_match_stringi(dataBuf, ce->command, cmd_len)){
-					//INFO("Match\r\n");
-					if(util_parse_param_int(dataBuf + cmd_len, &ce->p.i)){
-						if(CP_QBOOL == ce->type)
-							ce->p.i = (ce->p.i) ? 1: 0;
-						//INFO("%s = %d\r\n", ce->command, ce->p.i);
-						if(!kvstore_update_number(configHandle, ce->command, ce->p.i))
-							INFO("Error storing integer parameter");
-						break;
-					}
-					else { // Return current setting
-						os_sprintf(buf, "%s:%d", ce->command, ce->p.i);
-						MQTT_Publish(&mqttClient, statusTopic, buf, os_strlen(buf), 0, 0);
-					}
+				int res = util_parse_param_qint(command, ce->command, dataBuf, &ce->p.i);
+
+				if(2 == res){
+					if(CP_QBOOL == ce->type)
+						ce->p.i = (ce->p.i) ? 1: 0;
+					//INFO("%s = %d\r\n", ce->command, ce->p.i);
+					if(!kvstore_update_number(configHandle, ce->command, ce->p.i))
+						INFO("Error storing integer parameter");
+					break;
 				}
+				else if (0 == res){ // Return current setting
+					os_sprintf(buf, "{\"%s\":\"%d\"}", ce->command, ce->p.i);
+					MQTT_Publish(&mqttClient, statusTopic, buf, os_strlen(buf), 0, 0);
+				}
+
 			}
 			if(CP_QSTRING == ce->type){ // Query strings
 				char *val;
-				if(util_parse_command_qstring(dataBuf, ce->command,  &val)){
+				if(util_parse_command_qstring(command, ce->command, dataBuf, &val)){
 					if((CMD_SSID == i) || (CMD_WIFIPASS == i)){ // SSID or WIFIPASS?
 						handleQstringCommand(val, ce);
 					}
@@ -500,7 +516,7 @@ void ICACHE_FLASH_ATTR clock_init(void)
 
 	// Last will and testament
 
-	os_sprintf(buf, "muster{connstate:offline,device:%s}", configInfoBlock.e[MQTTDEVPATH].value);
+	os_sprintf(buf, "{\"muster\":{\"connstate\":\"offline\",\"device\":\"%s\"}}", configInfoBlock.e[MQTTDEVPATH].value);
 	MQTT_InitLWT(&mqttClient, "/node/info", buf, 0, 0);
 
 
