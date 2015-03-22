@@ -21,48 +21,60 @@ One control message is currently supported: *muster*. This directs the node to r
 
 **Command Messages**
 
-|Command| Description |
-|-------| ----------- |
-|TIME24:n 	| Sets display format 1 = 24 hour, 0 = 12 hour|
-|UTCOFFSET:n	| Sets offset in seconds from UTC|
-|SURVEY	| Returns WIFI survey information as seen by the node|
-|SSID:n| Query or set SSID|
-|WIFIPASS:n| Query or set WIFI password|
-|RESTART| Restarts the clock
+Command messages are sent using JSON encoding as follows:
+
+{"command":"command from table below"} For commands without a parameter
+
+{"command":"$COMMAND","param","$PARAM"} For commands with a parameter
+
+Because of limitations with the Espressif JSON parser library, all numbers should be sent as text fields 
+(i.e. quoted)
+
+
+|Command    | Description |
+|-------    | ----------- |
+|time24	    | Sets display format 1 = 24 hour, 0 = 12 hour|
+|utcoffset	| Sets offset in seconds from UTC|
+|survey	    | Returns WIFI survey information as seen by the node|
+|ssid       | Query or set SSID|
+|wifipass   | Query or set WIFI password|
+|restart    | Restarts the clock
 
 Notes:
 
-* Sending an SSID, or WIFIPASS command without a parameter will return the current value
-* SSID:n, WIFIPASS:n change not effective until next system restart
+* $ indicates a variable. e.g.: $COMMAND would be one of the commands in the table above.
+* Sending an ssid, or wifipass command without "parameter":"$PARAM" will return the current value.
+* ssid, wifipass change not effective until next system restart
 
 Status messages which can be published:
 
-* SSID:yourssid
-* WIFIPASS:yourwifipass
-* WIFI survey data in the following format: ap:$AP;chan:$CHAN;rssi:$RSSI. Can be multiple lines. One entry per line. 
+* WIFI survey data in the following format: {"access_points":["$AP":{"chan":"$CHAN","rssi":"$RSSI"}...]} 
 
 **MQTT Power on Message**
 
-After booting, the node publishes a message to /node/info with the following data:
+After booting, the node posts a JSON encoded message to /node/info with the following data:
 
 |Field		| Description|
 |-----      | -----------|
-|CONNSTATE	| Indicates device is on line|
-|DEVICE		| A device path (e.g. /home/lab/clock)|
-|IP ADDRESS	| The IP address assigned to the node|
-|SCHEMA		| A schema name of hwstar_ntpclock (vendor_product)|
-|SSID		| SSID in use
+|connstate	| Indicates device is on line|
+|device	    | A device path (e.g. /home/lab/clock)|
+|ip4	    | The IP address assigned to the node|
+|schema		| A schema name of hwstar_ntpclock (vendor_product)|
+|ssid		| SSID in use
 
 
 The schema may be used to design a database of supported commands for each device:
 
-muster{connstate:online,device:/home/lab/clock,ip4:127.0.0.1,schema:hwstar_ntpclock,ssid:yourssid}
+Here is an example:
+
+{"muster":{"connstate":"online","device":"/home/lab/relay","ip4":"$IP","schema":"hwstar_ntpclock","ssid":"$SSID"}}
+
 
 **Last Will and Testament**
 
 The following will be published to /node/info if the node is not heard from by the MQTT broker:
 
-muster{connstate:offline,device:$DEVICE}
+{"muster":{"connstate":"offline","device":"$DEVICE"}}
 
 **Configuration Patcher**
 
