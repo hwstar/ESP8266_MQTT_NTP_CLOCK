@@ -86,12 +86,13 @@ https://github.com/hwstar/ESP8266-MQTT-config-patcher
 
 **Toolchain**
 
-This code requires the ESP8266 toolchain be installed on a Linux box. 
-Windows and Mac machines are not supported as I have no way to test on those platforms.
-The toolchain can be obtained from here:
+Requires the ESP8266 toolchain be installed on the Linux system per the instructions available here:
 
-https://github.com/esp8266/esp8266-wiki/wiki/Toolchain
+https://github.com/pfalcon/esp-open-sdk
 
+toolchain should be installed in the /opt directory. Other directories will require Makefile modifications.
+
+NB:Current Makefile supports Linux build hosts only at this time.
 
 **Electrical Details**
 

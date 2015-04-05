@@ -358,9 +358,9 @@ void ICACHE_FLASH_ATTR mqttDataCb(uint32_t *args, const char* topic, uint32_t to
 		for(i = 0; commandElements[i].command[0]; i++){
 			command_element *ce = &commandElements[i];
 			uint8_t cmd_len = os_strlen(ce->command);
-			//INFO("Trying %s\r\n", ce->command);
+			//INFO("Trying %s:%s\r\n", command, ce->command);
 			if(CP_NONE == ce->type){ // Parameterless commands
-				if(!os_strcmp(dataBuf, ce->command)){
+				if(!os_strcmp(command, ce->command)){
 					if(CMD_SURVEY == i){ // SURVEY? 
 						wifi_station_scan(NULL, survey_complete_cb);
 						break;

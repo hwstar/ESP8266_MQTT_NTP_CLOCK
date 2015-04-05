@@ -1,7 +1,7 @@
 #ifndef __SNTP_H__
 #define __SNTP_H__
 
-#include "lwip/ip_addr.h"
+
 
 #ifdef __cplusplus
 extern "C" {
